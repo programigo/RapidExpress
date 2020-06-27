@@ -1,0 +1,52 @@
+﻿@model DeliveryListingViewModel
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["Deliveries"];
+}
+
+<div class="row">
+	@foreach (var delivery in Model.Deliveries)
+	{
+		<div class="col-lg-4 col-md-6 mb-4">
+			<div class="card h-100">
+				@if (delivery.Photos.Any())
+				{
+					<img src="~/images/@delivery.Photos.First().Path" class="card-img">
+				}
+				else
+				{
+					<img src="~/images/no-image-icon-11.png" class="card-img">
+				}
+				<div class="card-body">
+					<h4 class="card-title">
+						<a asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">@delivery.Title</a>
+					</h4>
+					<p class="card-text">@Localizer["Pick up location"]: @delivery.PickupLocation</p>
+					<p class="card-text">@Localizer["Delivery location"]: @delivery.DeliveryLocation</p>
+					<p class="card-text">@Localizer["Collection date"]: @delivery.CollectionDate.ToShortDateString()</p>
+				</div>
+				@await Component.InvokeAsync("BidForm", new { deliveryId = delivery.Id })
+			</div>
+		</div>
+	}
+</div>
+
+
+@if (Model.TotalDeliveries > Model.Deliveries.Count())
+{
+	<ul class="pagination">
+		<li class="@(Model.CurrentPage == 1 ? "disabled" : string.Empty)">
+			<a asp-route-page="@Model.PreviousPage"
+			   aria-label="Previous">
+				<span id="previous-page" aria-hidden="true">Previous</span>
+			</a>
+		</li>
+		<li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty)">
+			<a asp-route-page="@Model.NextPage"
+			   aria-label="Next">
+				<span id="next-page" aria-hidden="true">Next</span>
+			</a>
+		</li>
+	</ul>
+}

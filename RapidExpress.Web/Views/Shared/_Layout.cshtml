@@ -1,0 +1,115 @@
+﻿@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>
+		@ViewData["Title"] - Rapid Express
+	</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #e3f2fd;">
+			<div class="container">
+				<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+					Rapid Express
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+					</span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					<ul class="navbar-nav">
+						@if (User.IsInRole(GlobalConstants.TransporterRole))
+						{
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="Deliveries" asp-action="Index">
+									@Localizer["Deliveries"]
+								</a>
+							</li>
+						}
+						@if (User.IsInRole(GlobalConstants.AdministratorRole))
+						{
+							<li class="nav-item">
+								<a class="nav-link" asp-area="Admin" asp-controller="Deliveries" asp-action="Index">
+									@Localizer["All Deliveries"]
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+									@Localizer["Users"]
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">
+										@Localizer["User Administration"]
+									</a>
+									<a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Pending">
+										@Localizer["Pending Requests"]
+									</a>
+									<a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Register">
+										@Localizer["Register New Moderator"]
+									</a>
+								</div>
+							</li>
+						}
+						@if (User.IsInRole(GlobalConstants.ModeratorRole))
+						{
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+									@Localizer["Users"]
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Index">
+										@Localizer["User Administration"]
+									</a>
+									<a class="dropdown-item" asp-area="Admin" asp-controller="Users" asp-action="Pending">
+										@Localizer["Pending Requests"]
+									</a>
+								</div>
+							</li>
+						}
+						@if (User.IsInRole(GlobalConstants.CustomerRole))
+						{
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="Deliveries" asp-action="Create">
+									@Localizer["Create new delivery"]
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+				<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					<partial name="_LoginPartial" />
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		@if (TempData.ContainsKey(GlobalConstants.TempDataSuccessMessageKey))
+		{
+			<div class="alert alert-success">
+				@TempData[GlobalConstants.TempDataSuccessMessageKey]
+			</div>
+		}
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2020 - Rapid Express
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD2sQdRrCe5JPI47nmVm_Vcn4BwC4hA5g&libraries=places"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

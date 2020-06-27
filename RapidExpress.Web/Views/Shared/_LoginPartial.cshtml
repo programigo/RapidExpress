@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@inject IViewLocalizer Localizer
+
+<ul class="navbar-nav">
+	@if (SignInManager.IsSignedIn(User))
+	{
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Manage" asp-action="Index">
+				@User.Identity.Name
+			</a>
+		</li>
+		<li class="nav-item">
+			<form class="form-inline" asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+				<button type="submit" class="nav-link btn btn-link text-dark">
+					@Localizer["Logout"]
+				</button>
+			</form>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				@Localizer["Register"]
+			</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" asp-area="" asp-controller="Customers" asp-action="Register">
+					@Localizer["Register As Customer"]
+				</a>
+				<a class="dropdown-item" asp-area="" asp-controller="Transporters" asp-action="Register">
+					@Localizer["Register As Transporter"]
+				</a>
+			</div>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+				@Localizer["Login"]
+			</a>
+		</li>
+	}
+</ul>

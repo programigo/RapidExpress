@@ -1,0 +1,42 @@
+﻿using RapidExpress.Data.Models;
+using RapidExpress.Services.Models;
+using RapidExpress.Services.Models.Deliveries;
+using System;
+using System.Collections.Generic;
+
+namespace RapidExpress.Services
+{
+	public interface IDeliveryService
+	{
+		int TotalDeliveries();
+
+		IEnumerable<DeliveryListingServiceModel> All(int page = 1);
+
+		IEnumerable<DeliveryListingServiceModel> All();
+
+		Delivery Create(
+			string title,
+			int price,
+			DeliveryCategory category,
+			string pickupLocation,
+			string deliveryLocation,
+			DateTime collectionDate,
+			IEnumerable<string> photoPaths,
+			int lengthFirstPart,
+			int? lengthSecondPart,
+			int widthFirstPart,
+			int? widthSecondPart,
+			int heightFirstPart,
+			int? heightSecondPart,
+			int weight,
+			string additionalDetails,
+			DateTime createDate,
+			string userId);
+
+		DeliveryDetailsServiceModel Details(int id);
+
+		void Remove(int id);
+
+		Delivery GetById(int id);
+	}
+}

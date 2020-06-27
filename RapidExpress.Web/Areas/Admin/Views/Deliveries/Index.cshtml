@@ -1,0 +1,101 @@
+﻿@model List<DeliveryItemViewModel>
+@inject IViewLocalizer Localizer
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>
+				@Localizer["Title"]
+			</th>
+			<th>
+				@Localizer["Category"]
+			</th>
+			<th>
+				@Localizer["Pick Up Location"]
+			</th>
+			<th>
+				@Localizer["Delivery Location"]
+			</th>
+			<th>
+				@Localizer["Collection Date"]
+			</th>
+			<th>
+				@Localizer["Create Date"]
+			</th>
+			<th>
+				@Localizer["Price"]
+			</th>
+			<th>
+				@Localizer["Created by"]
+			</th>
+			<th>
+				@Localizer["Actions"]
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var delivery in Model)
+		{
+			<tr data-toggle="collapse" href="#collapse-item-@delivery.Id">
+				<td>
+					<a asp-area="" asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">
+						@delivery.Title
+					</a>
+				</td>
+				<td>
+					@delivery.Category
+				</td>
+				<td>
+					@delivery.PickupLocation
+				</td>
+				<td>
+					@delivery.DeliveryLocation
+				</td>
+				<td>
+					@delivery.CollectionDate.ToShortDateString()
+				</td>
+				<td>
+					@delivery.CreateDate.ToShortDateString()
+				</td>
+				<td>
+					@delivery.Price
+				</td>
+				<td>
+					@delivery.User.UserName
+				</td>
+				<td>
+					<a asp-controller="Deliveries" asp-action="Remove" asp-route-id="@delivery.Id" class="btn btn-danger">
+						@Localizer["Remove"]
+					</a>
+				</td>
+			</tr>
+			@foreach (var bid in delivery.Bids)
+			{
+				<tr id="collapse-item-@delivery.Id" class="collapse hide-table-padding bg-light">
+					<td>
+						@bid.Amount
+					</td>
+					<td>
+						@bid.Currency
+					</td>
+					<td>
+						<a asp-area="" asp-controller="Transporters" asp-action="Details" asp-route-id="@bid.UserId">
+							@bid.Username
+						</a>
+					</td>
+					<td>
+						<a asp-controller="Deliveries" asp-action="SendOffer" asp-route-bidId="@bid.Id" asp-route-deliveryId="@delivery.Id" class="btn btn-success">
+							@Localizer["Send offer"]
+						</a>
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+
+<style>
+	tr.hide-table-padding td {
+		padding: 0;
+	}
+</style>

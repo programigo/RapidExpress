@@ -1,0 +1,118 @@
+﻿@model RegisterCustomerViewModel
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["Register As Customer"];
+}
+
+<h2>
+	@ViewData["Title"]
+</h2>
+
+<div class="row">
+	<div class="col-md-4">
+		<form id="reg-form" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Username">
+					@Localizer["Username"]
+				</label>
+				<input asp-for="Username" class="form-control" />
+				<span asp-validation-for="Username" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Password">
+					@Localizer["Password"]
+				</label>
+				<input asp-for="Password" class="form-control" />
+				<span asp-validation-for="Password" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ConfirmPassword">
+					@Localizer["ConfirmPassword"]
+				</label>
+				<input asp-for="ConfirmPassword" class="form-control" />
+				<span asp-validation-for="ConfirmPassword" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="FirstName">
+					@Localizer["FirstName"]
+				</label>
+				<input asp-for="FirstName" class="form-control" />
+				<span asp-validation-for="FirstName" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="MiddleName">
+					@Localizer["MiddleName"]
+				</label>
+				<input asp-for="MiddleName" class="form-control" />
+				<span asp-validation-for="MiddleName" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LastName">
+					@Localizer["LastName"]
+				</label>
+				<input asp-for="LastName" class="form-control" />
+				<span asp-validation-for="LastName" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="City">
+					@Localizer["City"]
+				</label>
+				<input asp-for="City" class="form-control" />
+				<span asp-validation-for="City" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Email">
+					@Localizer["Email"]
+				</label>
+				<input asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Phone">
+					@Localizer["Phone"]
+				</label>
+				<input asp-for="Phone" class="form-control" />
+				<span asp-validation-for="Phone" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" asp-for="DoesAgree" />
+				<label asp-for="DoesAgree">
+				</label>
+				<span asp-validation-for="DoesAgree" class="text-danger">
+				</span>
+			</div>
+			<button type="submit" class="btn btn-primary">
+				@Localizer["Register"]
+			</button>
+		</form>
+	</div>
+</div>
+
+@section Scripts{
+	@await Html.PartialAsync("_ValidationScriptsPartial")
+
+	<script>
+		// extend range validator method to treat checkboxes differently
+		var defaultRangeValidator = $.validator.methods.range;
+		$.validator.methods.range = function (value, element, param) {
+			if (element.type === "checkbox") {
+				// if it"s a checkbox return true if it is checked
+				return element.checked;
+			} else {
+				// otherwise run the default validation function
+				return defaultRangeValidator.call(this, value, element, param);
+			}
+		}
+	</script>
+}

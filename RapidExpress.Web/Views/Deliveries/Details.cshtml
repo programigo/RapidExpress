@@ -1,0 +1,145 @@
+﻿@model DeliveryDetailsViewModel
+@inject IViewLocalizer Localizer
+
+<div>
+	<div class="card">
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						<b>
+							@Localizer["Category"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Pick Up Location"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Delivery Location"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Collection Date"]
+						</b>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						@Model.Category
+					</div>
+					<div class="col">
+						@Model.PickupLocation
+					</div>
+					<div class="col">
+						@Model.DeliveryLocation
+					</div>
+					<div class="col">
+						@Model.CollectionDate.ToShortDateString()
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						<b>
+							@Localizer["Length"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Width"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Height"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Weight"]
+						</b>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						@if (Model.LengthFirstPart > 0)
+						{
+							<span>
+								@Model.LengthFirstPart @Localizer["meters"]
+							</span>
+
+						}
+						@if (Model.LengthSecondPart != null && Model.LengthSecondPart > 0)
+						{
+							<span>
+								@Model.LengthSecondPart @Localizer["centimeters"]
+							</span>
+						}
+					</div>
+					<div class="col">
+						@if (Model.WidthFirstPart > 0)
+						{
+							<span>
+								@Model.WidthFirstPart @Localizer["meters"]
+							</span>
+						}
+						@if (Model.WidthSecondPart != null && Model.WidthSecondPart > 0)
+						{
+							<span>
+								@Model.WidthSecondPart @Localizer["centimeters"]
+							</span>
+						}
+					</div>
+					<div class="col">
+						@if (Model.HeightFirstPart > 0)
+						{
+							<span>
+								@Model.HeightFirstPart @Localizer["meters"]
+							</span>
+						}
+						@if (Model.HeightSecondPart != null && Model.HeightSecondPart > 0)
+						{
+							<span>
+								@Model.HeightSecondPart @Localizer["centimeters"]
+							</span>
+						}
+					</div>
+					<div class="col">
+						@Model.Weight @Localizer["kilograms"]
+					</div>
+				</div>
+			</li>
+			@if (Model.Photos.Any())
+			{
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col">
+							<b>
+								@Localizer["Photos"]
+							</b>
+						</div>
+						@foreach (var photo in Model.Photos)
+						{
+							<div class="col">
+								<img src="~/images/@photo.Path" class="card-img">
+							</div>
+						}
+					</div>
+				</li>
+			}
+		</ul>
+	</div>
+	@if (Model.AdditionalDetails != null)
+	{
+		@await Html.PartialAsync("_AdditionalDetailsPartial", Model.AdditionalDetails)
+	}
+</div>

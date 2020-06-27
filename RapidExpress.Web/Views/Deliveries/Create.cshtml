@@ -1,0 +1,146 @@
+﻿@model DeliveryFormModel
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["Create new delivery"];
+}
+
+<h2>
+	@ViewData["Title"]
+</h2>
+
+<div class="row">
+	<div class="col-md-4">
+		<form enctype="multipart/form-data" method="post">
+			<div class="form-group">
+				<label asp-for="Title">
+					@Localizer["Title"]
+				</label>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Price">
+					@Localizer["Price"]
+				</label>
+				<input type="number" min="0" step="10" placeholder="BGN" asp-for="Price" class="weight-input form-control" />
+				<span asp-validation-for="Price" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Category">
+					@Localizer["Category"]
+				</label>
+				<select asp-for="Category" asp-items="Html.GetEnumSelectList<DeliveryCategory>()" class="form-control">
+				</select>
+				<span asp-validation-for="Category" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PickupLocation">
+					@Localizer["Pick Up Location"]
+				</label>
+				<input id="pickup-location" asp-for="PickupLocation" class="form-control" />
+				<span asp-validation-for="PickupLocation" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DeliveryLocation">
+					@Localizer["Delivery Location"]
+				</label>
+				<input asp-for="DeliveryLocation" class="form-control" />
+				<span asp-validation-for="DeliveryLocation" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CollectionDate">
+					@Localizer["Collection Date"]
+				</label>
+				<input type="date" name="CollectionDate" required />
+				<span asp-validation-for="CollectionDate" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Photos">
+					@Localizer["Photos"]
+				</label>
+				<div class="custom-file">
+					<input multiple asp-for="Photos" class="form-control custom-file-input" />
+					<label class="custom-file-label">
+						@Localizer["Choose File..."]
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="LengthFirstPart">
+					@Localizer["Length"]
+				</label>
+				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="LengthFirstPart" class="first-part-input form-control mb-1" />
+				<span asp-validation-for="LengthFirstPart" class="text-danger">
+				</span>
+				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="LengthSecondPart" class="second-part-input form-control" />
+				<span asp-validation-for="LengthSecondPart" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="WidthFirstPart">
+					@Localizer["Width"]
+				</label>
+				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="WidthFirstPart" class="first-part-input form-control mb-1" />
+				<span asp-validation-for="WidthFirstPart" class="text-danger">
+				</span>
+				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="WidthSecondPart" class="second-part-input form-control" />
+				<span asp-validation-for="WidthSecondPart" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+
+				<label asp-for="HeightFirstPart">
+					@Localizer["Height"]
+				</label>
+				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="HeightFirstPart" class="first-part-input form-control mb-1" />
+				<span asp-validation-for="HeightFirstPart" class="text-danger">
+				</span>
+				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="HeightSecondPart" class="second-part-input form-control" />
+				<span asp-validation-for="HeightSecondPart" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Weight">
+					@Localizer["Weight"]
+				</label>
+				<input type="number" min="0" step="1" placeholder="@Localizer["kilograms"]" asp-for="Weight" class="weight-input form-control" />
+				<span asp-validation-for="Weight" class="text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="AdditionalDetails">
+					@Localizer["Additional Details"]
+				</label>
+				<textarea asp-for="AdditionalDetails" class="form-control">
+				</textarea>
+				<span asp-validation-for="AdditionalDetails" class="text-danger">
+				</span>
+			</div>
+			<button type="submit" class="btn btn-primary">
+				@Localizer["Create"]
+			</button>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@await Html.PartialAsync("_ValidationScriptsPartial")
+	@await Html.PartialAsync("_FileInputValidationScriptsPartial")
+	<script>
+		$(document).ready(function () {
+			var autocomplete;
+			var input = document.getElementById("pickup-location");
+			var options = {
+				componentRestrictions: { country: "bg" }
+			};
+
+			autocomplete = new google.maps.places.Autocomplete(input, options);
+		})
+	</script>
+}
