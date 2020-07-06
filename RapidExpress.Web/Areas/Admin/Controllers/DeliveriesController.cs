@@ -67,16 +67,18 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			return View(deliveries);
 		}
 
-		public async Task<IActionResult> SendOffer(int bidId, int deliveryId)
+		public async Task<IActionResult> SendOffer(
+			[FromQuery]
+			int bidId)
 		{
 			Bid bid = this.bidService.GetById(bidId);
-			Delivery delivery = this.deliveryService.GetById(deliveryId);
+			Delivery delivery = this.deliveryService.GetById(bid.DeliveryId);
 			User client = await this.userManager.FindByIdAsync(delivery.UserId);
 
 			await this.emailSender.SendEmailAsync(
 				client.Email,
 				$"You have a new offer for delivery {delivery.Title}",
-				$"A new offer for delivery {delivery.Title} has been recieved. Visit https://localhost:44315/Details/{delivery.Id} to make a payment.");
+				$"A new offer for delivery {delivery.Title} has been recieved. Visit https://localhost:44315/Checkout?bidId={bidId} to make a payment.");
 
 			return RedirectToAction(nameof(Index));
 		}

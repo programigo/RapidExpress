@@ -12,8 +12,12 @@ using Microsoft.Extensions.Localization;
 using RapidExpress.Data;
 using RapidExpress.Data.Models;
 using RapidExpress.Web.Infrastructure.Extensions;
+using RapidExpress.Web.Models.Stripe;
 using RapidExpress.Web.Resources;
 using RapidExpress.Web.Resources.IdentityErrorMessages;
+using Stripe;
+using Stripe.Checkout;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace RapidExpress.Web
@@ -69,6 +73,8 @@ namespace RapidExpress.Web
 					var localizer = factory.Create("SharedResource", assemblyName.Name);
 					o.DataAnnotationLocalizerProvider = (t, f) => localizer;
 				});
+
+			services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +89,10 @@ namespace RapidExpress.Web
 			app.UseRequestLocalization(localizationOptions);
 
 			app.UseDatabaseMigration();
+
+			StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+
+			//this.CreateStripeCheckoutSession();
 
 			if (env.IsDevelopment())
 			{
@@ -112,6 +122,40 @@ namespace RapidExpress.Web
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 			});
+		}
+
+		private void CreateStripeCheckoutSession()
+		{
+			var options = new SessionCreateOptions
+			{
+				PaymentMethodTypes = new List<string>
+				{
+					"card",
+				},
+				LineItems = new List<SessionLineItemOptions>
+				{
+					new SessionLineItemOptions
+					{
+						Price = "{{PRICE_ID}}",
+						Quantity = 1,
+					},
+				},
+
+				Mode = "payment",
+				PaymentIntentData = new SessionPaymentIntentDataOptions
+				{
+					ApplicationFeeAmount = 200,
+				},
+				SuccessUrl = "https://example.com/success",
+				CancelUrl = "https://example.com/cancel",
+			};
+
+			var requestOptions = new RequestOptions
+			{
+				StripeAccount = "{{CONNECTED_STRIPE_ACCOUNT_ID}}",
+			};
+			var service = new SessionService();
+			Session session = service.Create(options, requestOptions);
 		}
 	}
 }

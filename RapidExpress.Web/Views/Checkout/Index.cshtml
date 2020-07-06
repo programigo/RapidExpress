@@ -1,0 +1,23 @@
+﻿<div id="checkout-page-content"
+	 data-secret="@ViewData["SessionID"]">
+	<div class="d-flex justify-content-center">
+		<div class="spinner-border text-info"
+			 role="status">
+			<span class="sr-only">
+				Loading...
+			</span>
+		</div>
+	</div>
+</div>
+
+<script>
+	window.onload = function () {
+		var stripe = Stripe("pk_test_51GylgcBUiGb2h4wQvj3T4c5Oh1FukwKOo78B2iCZuMnZZmeG3la0c5mcLXFXYEPLG2qHbl29AYiMq9awL8NezjwX00SPkVraj3");
+
+		var pageContent = document.getElementById("checkout-page-content");
+
+		stripe.redirectToCheckout({
+			sessionId: pageContent.dataset.secret,
+		});
+	}
+</script>
