@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Animals" xml:space="preserve">
+    <value>Животни</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>Град</value>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Дрехи</value>
   </data>
   <data name="Collection Date" xml:space="preserve">
     <value>Дата за взимане</value>
@@ -129,11 +135,11 @@
   <data name="Current password" xml:space="preserve">
     <value>Текуща парола</value>
   </data>
-  <data name="Delivery Location" xml:space="preserve">
-    <value>Населено място за доставка</value>
-  </data>
   <data name="Does Agree" xml:space="preserve">
     <value>Съгласявам се</value>
+  </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Електроника</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Имейл</value>
@@ -141,8 +147,20 @@
   <data name="First name" xml:space="preserve">
     <value>Име</value>
   </data>
+  <data name="Food" xml:space="preserve">
+    <value>Храна</value>
+  </data>
+  <data name="Home And Garden" xml:space="preserve">
+    <value>Дом и градина</value>
+  </data>
+  <data name="Insurance" xml:space="preserve">
+    <value>Застраховка</value>
+  </data>
   <data name="Last name" xml:space="preserve">
     <value>Фамилия</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Местоположение</value>
   </data>
   <data name="Middle name" xml:space="preserve">
     <value>Презиме</value>
@@ -150,20 +168,29 @@
   <data name="New password" xml:space="preserve">
     <value>Нова парола</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Други</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Парола</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Телефон за връзка</value>
   </data>
-  <data name="Phone number" xml:space="preserve">
+  <data name="Phone Number" xml:space="preserve">
     <value>Телефонен номер</value>
-  </data>
-  <data name="Pickup Location" xml:space="preserve">
-    <value>Населено място за прием</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Цена</value>
+  </data>
+  <data name="Property Type" xml:space="preserve">
+    <value>Тип имот</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Спорт</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Улица</value>
   </data>
   <data name="The new password and confirmation password do not match." xml:space="preserve">
     <value>Новата парола и паролата за потвърждение не съвпадат.</value>
@@ -186,11 +213,17 @@
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>
   </data>
+  <data name="Vehicles" xml:space="preserve">
+    <value>Превозни средства</value>
+  </data>
   <data name="Weight" xml:space="preserve">
     <value>Тегло</value>
   </data>
   <data name="You Must Agree To The Terms Of Rapid Express User Agreement And Privacy Policy To Continue." xml:space="preserve">
     <value>Трябва да се съгласите с условията на Споразумението и Декларацията за поверителност на Rapid Express, за да продължите.</value>
+  </data>
+  <data name="Zip Code" xml:space="preserve">
+    <value>Пощенски код</value>
   </data>
   <data name="{0} must contain between 5 and 15 symbols." xml:space="preserve">
     <value>{0} трябва да съдържа между 5 и 15 символа.</value>

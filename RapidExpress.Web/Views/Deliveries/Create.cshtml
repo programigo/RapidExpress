@@ -9,110 +9,123 @@
 	@ViewData["Title"]
 </h2>
 
-<div class="row">
-	<div class="col-md-4">
-		<form enctype="multipart/form-data" method="post">
-			<div class="form-group">
-				<label asp-for="Title">
-					@Localizer["Title"]
-				</label>
-				<input asp-for="Title" class="form-control" />
-				<span asp-validation-for="Title" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Price">
-					@Localizer["Price"]
-				</label>
-				<input type="number" min="0" step="10" placeholder="BGN" asp-for="Price" class="weight-input form-control" />
-				<span asp-validation-for="Price" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Category">
-					@Localizer["Category"]
-				</label>
-				<select asp-for="Category" asp-items="Html.GetEnumSelectList<DeliveryCategory>()" class="form-control">
-				</select>
-				<span asp-validation-for="Category" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="PickupLocation">
-					@Localizer["Pick Up Location"]
-				</label>
-				<input id="pickup-location" asp-for="PickupLocation" class="form-control" />
-				<span asp-validation-for="PickupLocation" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="DeliveryLocation">
-					@Localizer["Delivery Location"]
-				</label>
-				<input asp-for="DeliveryLocation" class="form-control" />
-				<span asp-validation-for="DeliveryLocation" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="CollectionDate">
-					@Localizer["Collection Date"]
-				</label>
-				<input type="date" name="CollectionDate" required />
-				<span asp-validation-for="CollectionDate" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Photos">
-					@Localizer["Photos"]
-				</label>
-				<div class="custom-file">
-					<input multiple asp-for="Photos" class="form-control custom-file-input" />
-					<label class="custom-file-label">
-						@Localizer["Choose File..."]
-					</label>
+<div class="card">
+	<form enctype="multipart/form-data" method="post">
+		<div class="card-header">
+			@Localizer["Main Information"]
+		</div>
+		<div class="card-body">
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="Title">
+							@Localizer["Title"]
+						</label>
+						<input asp-for="Title" class="form-control" />
+						<span asp-validation-for="Title" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="Price">
+							@Localizer["Price"]
+						</label>
+						<input type="number" min="0" step="10" placeholder="BGN" asp-for="Price" class="weight-input form-control" />
+						<span asp-validation-for="Price" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="Category">
+							@Localizer["Category"]
+						</label>
+						<select asp-for="Category" asp-items="Html.GetEnumSelectList<DeliveryCategory>()" class="form-control">
+						</select>
+						<span asp-validation-for="Category" class="text-danger"></span>
+					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label asp-for="LengthFirstPart">
-					@Localizer["Length"]
-				</label>
-				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="LengthFirstPart" class="first-part-input form-control mb-1" />
-				<span asp-validation-for="LengthFirstPart" class="text-danger">
-				</span>
-				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="LengthSecondPart" class="second-part-input form-control" />
-				<span asp-validation-for="LengthSecondPart" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
-				<label asp-for="WidthFirstPart">
-					@Localizer["Width"]
-				</label>
-				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="WidthFirstPart" class="first-part-input form-control mb-1" />
-				<span asp-validation-for="WidthFirstPart" class="text-danger">
-				</span>
-				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="WidthSecondPart" class="second-part-input form-control" />
-				<span asp-validation-for="WidthSecondPart" class="text-danger">
-				</span>
-			</div>
-			<div class="form-group">
 
-				<label asp-for="HeightFirstPart">
-					@Localizer["Height"]
-				</label>
-				<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="HeightFirstPart" class="first-part-input form-control mb-1" />
-				<span asp-validation-for="HeightFirstPart" class="text-danger">
-				</span>
-				<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="HeightSecondPart" class="second-part-input form-control" />
-				<span asp-validation-for="HeightSecondPart" class="text-danger">
-				</span>
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="CollectionDate">
+							@Localizer["Collection Date"]
+						</label>
+						<input type="date" name="CollectionDate" required />
+						<span asp-validation-for="CollectionDate" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="Photos">
+							@Localizer["Photos"]
+						</label>
+						<div class="custom-file">
+							<input multiple asp-for="Photos" class="form-control custom-file-input" />
+							<label class="custom-file-label">
+								@Localizer["Choose File(s)..."]
+							</label>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label asp-for="Weight">
-					@Localizer["Weight"]
-				</label>
-				<input type="number" min="0" step="1" placeholder="@Localizer["kilograms"]" asp-for="Weight" class="weight-input form-control" />
-				<span asp-validation-for="Weight" class="text-danger">
-				</span>
+
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="LengthFirstPart">
+							@Localizer["Length"]
+						</label>
+						<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="LengthFirstPart" class="first-part-input form-control mb-1" />
+						<span asp-validation-for="LengthFirstPart" class="text-danger">
+						</span>
+						<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="LengthSecondPart" class="second-part-input form-control" />
+						<span asp-validation-for="LengthSecondPart" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="WidthFirstPart">
+							@Localizer["Width"]
+						</label>
+						<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="WidthFirstPart" class="first-part-input form-control mb-1" />
+						<span asp-validation-for="WidthFirstPart" class="text-danger">
+						</span>
+						<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="WidthSecondPart" class="second-part-input form-control" />
+						<span asp-validation-for="WidthSecondPart" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="HeightFirstPart">
+							@Localizer["Height"]
+						</label>
+						<input type="number" min="0" step="1" placeholder="@Localizer["meters"]" asp-for="HeightFirstPart" class="first-part-input form-control mb-1" />
+						<span asp-validation-for="HeightFirstPart" class="text-danger">
+						</span>
+						<input type="number" min="0" step="1" placeholder="@Localizer["centimeters"]" asp-for="HeightSecondPart" class="second-part-input form-control" />
+						<span asp-validation-for="HeightSecondPart" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="Weight">
+							@Localizer["Weight"]
+						</label>
+						<input type="number" min="0" step="1" placeholder="@Localizer["kilograms"]" asp-for="Weight" class="weight-input form-control" />
+						<span asp-validation-for="Weight" class="text-danger">
+						</span>
+					</div>
+				</div>
 			</div>
+
 			<div class="form-group">
 				<label asp-for="AdditionalDetails">
 					@Localizer["Additional Details"]
@@ -122,25 +135,212 @@
 				<span asp-validation-for="AdditionalDetails" class="text-danger">
 				</span>
 			</div>
-			<button type="submit" class="btn btn-primary">
-				@Localizer["Create"]
-			</button>
-		</form>
-	</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col">
+						<legend class="col-form-label">
+							@Localizer["Insurance"]
+						</legend>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.HasInsurance, true, new { id = "yes-radio-button" })
+							<label for="yes-radio-button">@Localizer["Yes"]</label>
+						</div>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.HasInsurance, false, new { id = "no-radio-button" })
+							<label for="no-radio-button">@Localizer["No"]</label>
+						</div>
+					</div>
+				</div>
+				<span asp-validation-for="HasInsurance" class="text-danger"></span>
+			</div>
+		</div>
+
+
+		<div class="card-header">
+			@Localizer["Information For Pick Up"]
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<div class="row">
+					<div class="col">
+						<legend class="col-form-label">
+							@Localizer["Property Type"]
+						</legend>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.PickUpPropertyType, PropertyType.Business, new { id = "pickup-business-checkbox" })
+							<label for="pickup-business-checkbox">@Localizer["Business"]</label>
+						</div>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.PickUpPropertyType, PropertyType.Private, new { id = "pickup-private-checkbox" })
+							<label for="pickup-private-checkbox">@Localizer["Private"]</label>
+						</div>
+					</div>
+				</div>
+				<span asp-validation-for="PickUpPropertyType" class="text-danger"></span>
+			</div>
+
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="PickUpLocation">
+							@Localizer["Location"]
+						</label>
+						<input id="pickup-location" asp-for="PickUpLocation" class="form-control" />
+						<span asp-validation-for="PickUpLocation" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="PickUpLocationZipCode">
+							@Localizer["Zip Code"]
+						</label>
+						<input type="number" asp-for="PickUpLocationZipCode" class="form-control" />
+						<span asp-validation-for="PickUpLocationZipCode" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="PickUpStreet">
+							@Localizer["Street"]
+						</label>
+						<input asp-for="PickUpStreet" class="form-control" />
+						<span asp-validation-for="PickUpStreet" class="text-danger">
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="SenderPhoneNumber">
+							@Localizer["Phone Number"]
+						</label>
+						<input asp-for="SenderPhoneNumber" class="form-control" />
+						<span asp-validation-for="SenderPhoneNumber" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="SenderEmail">
+							@Localizer["Email"]
+						</label>
+						<input asp-for="SenderEmail" class="form-control" />
+						<span asp-validation-for="SenderEmail" class="text-danger">
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="card-header">
+			@Localizer["Information For Delivery"]
+		</div>
+		<div class="card-body">
+			<div class="form-group">
+				<div class="row">
+					<div class="col">
+						<legend class="col-form-label">
+							@Localizer["Property Type"]
+						</legend>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.DeliveryPropertyType, PropertyType.Business, new { id = "delivery-business-checkbox" })
+							<label for="delivery-business-checkbox">@Localizer["Business"]</label>
+						</div>
+						<div class="form-check">
+							@Html.RadioButtonFor(m => m.DeliveryPropertyType, PropertyType.Private, new { id = "delivery-private-checkbox" })
+							<label for="delivery-private-checkbox">@Localizer["Private"]</label>
+						</div>
+					</div>
+				</div>
+				<span asp-validation-for="DeliveryPropertyType" class="text-danger"></span>
+			</div>
+
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="DeliveryLocation">
+							@Localizer["Location"]
+						</label>
+						<input id="delivery-location" asp-for="DeliveryLocation" class="form-control" />
+						<span asp-validation-for="DeliveryLocation" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="DeliveryLocationZipCode">
+							@Localizer["Zip Code"]
+						</label>
+						<input type="number" asp-for="DeliveryLocationZipCode" class="form-control" />
+						<span asp-validation-for="DeliveryLocationZipCode" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="DeliveryStreet">
+							@Localizer["Street"]
+						</label>
+						<input asp-for="DeliveryStreet" class="form-control" />
+						<span asp-validation-for="DeliveryStreet" class="text-danger">
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="RecipientPhoneNumber">
+							@Localizer["Phone Number"]
+						</label>
+						<input asp-for="RecipientPhoneNumber" class="form-control" />
+						<span asp-validation-for="RecipientPhoneNumber" class="text-danger">
+						</span>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label asp-for="RecipientEmail">
+							@Localizer["Email"]
+						</label>
+						<input asp-for="RecipientEmail" class="form-control" />
+						<span asp-validation-for="RecipientEmail" class="text-danger">
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block">
+			@Localizer["Create"]
+		</button>
+	</form>
 </div>
+
+
 
 @section Scripts {
 	@await Html.PartialAsync("_ValidationScriptsPartial")
 	@await Html.PartialAsync("_FileInputValidationScriptsPartial")
 	<script>
 		$(document).ready(function () {
-			var autocomplete;
-			var input = document.getElementById("pickup-location");
+			var pickUpAutocomplete;
+			var deliveryAutocomplete;
+			var pickUpLocationInput = document.getElementById("pickup-location");
+			var deliveryLocationInput = document.getElementById("delivery-location");
 			var options = {
 				componentRestrictions: { country: "bg" }
 			};
 
-			autocomplete = new google.maps.places.Autocomplete(input, options);
+			pickUpAutocomplete = new google.maps.places.Autocomplete(pickUpLocationInput, options);
+			deliveryAutocomplete = new google.maps.places.Autocomplete(deliveryLocationInput, options);
 		})
 	</script>
 }

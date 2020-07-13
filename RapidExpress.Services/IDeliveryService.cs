@@ -1,5 +1,4 @@
 ﻿using RapidExpress.Data.Models;
-using RapidExpress.Services.Models;
 using RapidExpress.Services.Models.Deliveries;
 using System;
 using System.Collections.Generic;
@@ -18,8 +17,19 @@ namespace RapidExpress.Services
 			string title,
 			int price,
 			DeliveryCategory category,
-			string pickupLocation,
+			bool hasInsurance,
+			PropertyType pickUpPropertyType,
+			string pickUpLocation,
+			string pickUpSreeet,
+			int? pickUpLocationZipCode,
+			string senderPhoneNumber,
+			string senderEmail,
+			PropertyType deliveryPropertyType,
 			string deliveryLocation,
+			string deliveryStreet,
+			int? deliveryLocationZipCode,
+			string recipientPhoneNumber,
+			string recipientEmail,
 			DateTime collectionDate,
 			IEnumerable<string> photoPaths,
 			int lengthFirstPart,
