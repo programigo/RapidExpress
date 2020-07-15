@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Animals" xml:space="preserve">
+    <value>Animals</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
   <data name="centimeters" xml:space="preserve">
     <value>centimeters</value>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Clothes</value>
   </data>
   <data name="Collection Date" xml:space="preserve">
     <value>Collection Date</value>
@@ -129,8 +135,17 @@
   <data name="Delivery Location" xml:space="preserve">
     <value>Delivery Location</value>
   </data>
+  <data name="Electronics" xml:space="preserve">
+    <value>Electronics</value>
+  </data>
+  <data name="Food" xml:space="preserve">
+    <value>Food</value>
+  </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
+  </data>
+  <data name="HomeAndGarden" xml:space="preserve">
+    <value>Home And Garden</value>
   </data>
   <data name="kilograms" xml:space="preserve">
     <value>kilograms</value>
@@ -141,11 +156,20 @@
   <data name="meters" xml:space="preserve">
     <value>meters</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="Photos" xml:space="preserve">
     <value>Photos</value>
   </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Pick Up Location</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="Vehicles" xml:space="preserve">
+    <value>Vehicles</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Weight</value>

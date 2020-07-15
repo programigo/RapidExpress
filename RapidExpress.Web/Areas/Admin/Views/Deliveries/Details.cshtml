@@ -3,6 +3,9 @@
 
 <div>
 	<div class="card">
+		<div class="card-header bg-primary text-white">
+			@Localizer["Main Information"]
+		</div>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">
 				<div class="row">
@@ -13,12 +16,12 @@
 					</div>
 					<div class="col">
 						<b>
-							@Localizer["Pick Up Location"]
+							@Localizer["Price"]
 						</b>
 					</div>
 					<div class="col">
 						<b>
-							@Localizer["Delivery Location"]
+							@Localizer["Insurance"]
 						</b>
 					</div>
 					<div class="col">
@@ -34,10 +37,10 @@
 						@Localizer[Model.Category.ToString()]
 					</div>
 					<div class="col">
-						@Model.PickUpLocation
+						@Model.Price
 					</div>
 					<div class="col">
-						@Model.DeliveryLocation
+						@(Model.HasInsurance ? Localizer["Yes"] : Localizer["No"])
 					</div>
 					<div class="col">
 						@Model.CollectionDate.ToShortDateString()
@@ -136,6 +139,138 @@
 					</div>
 				</li>
 			}
+		</ul>
+
+		<div class="card-header bg-primary text-white">
+			@Localizer["Information For Pick Up"]
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						<b>
+							@Localizer["Property Type"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Location"]
+						</b>
+					</div>
+					@if (Model.PickUpLocationZipCode != null)
+					{
+						<div class="col">
+							<b>
+								@Localizer["Zip Code"]
+							</b>
+						</div>
+					}
+					<div class="col">
+						<b>
+							@Localizer["Phone Number"]
+						</b>
+					</div>
+					@if (Model.SenderEmail != null)
+					{
+						<div class="col">
+							<b>
+								@Localizer["Email"]
+							</b>
+						</div>
+					}
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						@Localizer[Model.PickUpPropertyType.ToString()]
+					</div>
+					<div class="col">
+						@Model.PickUpLocation
+					</div>
+					@if (Model.PickUpLocationZipCode != null)
+					{
+						<div class="col">
+							@Model.PickUpLocationZipCode
+						</div>
+					}
+					<div class="col">
+						@Model.SenderPhoneNumber
+					</div>
+					@if (Model.SenderEmail != null)
+					{
+						<div class="col">
+							@Model.SenderEmail
+						</div>
+					}
+				</div>
+			</li>
+		</ul>
+
+		<div class="card-header bg-primary text-white">
+			@Localizer["Information For Delivery"]
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						<b>
+							@Localizer["Property Type"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
+							@Localizer["Location"]
+						</b>
+					</div>
+					@if (Model.DeliveryLocationZipCode != null)
+					{
+						<div class="col">
+							<b>
+								@Localizer["Zip Code"]
+							</b>
+						</div>
+					}
+					<div class="col">
+						<b>
+							@Localizer["Phone Number"]
+						</b>
+					</div>
+					@if (Model.RecipientEmail != null)
+					{
+						<div class="col">
+							<b>
+								@Localizer["Email"]
+							</b>
+						</div>
+					}
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="row">
+					<div class="col">
+						@Localizer[Model.PickUpPropertyType.ToString()]
+					</div>
+					<div class="col">
+						@Model.DeliveryLocation
+					</div>
+					@if (Model.DeliveryLocationZipCode != null)
+					{
+						<div class="col">
+							@Model.DeliveryLocationZipCode
+						</div>
+					}
+					<div class="col">
+						@Model.RecipientPhoneNumber
+					</div>
+					@if (Model.RecipientEmail != null)
+					{
+						<div class="col">
+							@Model.RecipientEmail
+						</div>
+					}
+				</div>
+			</li>
 		</ul>
 	</div>
 	@if (Model.AdditionalDetails != null)

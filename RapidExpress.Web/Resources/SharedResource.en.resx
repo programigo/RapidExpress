@@ -153,6 +153,12 @@
   <data name="Home And Garden" xml:space="preserve">
     <value>Home And Garden</value>
   </data>
+  <data name="Information For Delivery" xml:space="preserve">
+    <value>Information For Delivery</value>
+  </data>
+  <data name="Information For Pick Up" xml:space="preserve">
+    <value>Information For Pick Up</value>
+  </data>
   <data name="Insurance" xml:space="preserve">
     <value>Insurance</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="Location" xml:space="preserve">
     <value>Location</value>
+  </data>
+  <data name="Main Information" xml:space="preserve">
+    <value>Main Information</value>
   </data>
   <data name="Middle name" xml:space="preserve">
     <value>Middle name</value>

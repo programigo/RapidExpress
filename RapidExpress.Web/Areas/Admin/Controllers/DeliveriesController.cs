@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using RapidExpress.Data.Models;
 using RapidExpress.Services;
 using RapidExpress.Services.Models.Deliveries;
+using RapidExpress.Web.Areas.Admin.Models;
 using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Bids;
-using RapidExpress.Web.Models.Deliveries;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,7 +44,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 					Title = serviceDelivery.Title,
 					Price = serviceDelivery.Price,
 					Category = serviceDelivery.Category,
-					PickupLocation = serviceDelivery.PickupLocation,
+					PickUpLocation = serviceDelivery.PickUpLocation,
 					DeliveryLocation = serviceDelivery.DeliveryLocation,
 					CollectionDate = serviceDelivery.CollectionDate,
 					CreateDate = serviceDelivery.CreateDate,
@@ -65,6 +65,46 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			}
 
 			return View(deliveries);
+		}
+
+		public async Task<IActionResult> Details(int id)
+		{
+			DeliveryDetailsServiceModel deliveryDetailsServiceModel = this.deliveryService.Details(id);
+
+			DeliveryDetailsViewModel deliveryDetailsViewModel = new DeliveryDetailsViewModel
+			{
+				Id = deliveryDetailsServiceModel.Id,
+				Title = deliveryDetailsServiceModel.Title,
+				Price = deliveryDetailsServiceModel.Price,
+				Category = deliveryDetailsServiceModel.Category,
+				HasInsurance = deliveryDetailsServiceModel.HasInsurance,
+				PickUpPropertyType = deliveryDetailsServiceModel.PickUpPropertyType,
+				PickUpLocation = deliveryDetailsServiceModel.PickUpLocation,
+				PickUpStreet = deliveryDetailsServiceModel.PickUpStreet,
+				PickUpLocationZipCode = deliveryDetailsServiceModel.PickUpLocationZipCode,
+				SenderPhoneNumber = deliveryDetailsServiceModel.SenderPhoneNumber,
+				SenderEmail = deliveryDetailsServiceModel.SenderEmail,
+				DeliveryPropertyType = deliveryDetailsServiceModel.DeliveryPropertyType,
+				DeliveryLocation = deliveryDetailsServiceModel.DeliveryLocation,
+				DeliveryStreet = deliveryDetailsServiceModel.DeliveryStreet,
+				DeliveryLocationZipCode = deliveryDetailsServiceModel.DeliveryLocationZipCode,
+				RecipientPhoneNumber = deliveryDetailsServiceModel.RecipientPhoneNumber,
+				RecipientEmail = deliveryDetailsServiceModel.RecipientEmail,
+				CollectionDate = deliveryDetailsServiceModel.CollectionDate,
+				Photos = deliveryDetailsServiceModel.Photos,
+				LengthFirstPart = deliveryDetailsServiceModel.LengthFirstPart,
+				LengthSecondPart = deliveryDetailsServiceModel.LengthSecondPart,
+				WidthFirstPart = deliveryDetailsServiceModel.WidthFirstPart,
+				WidthSecondPart = deliveryDetailsServiceModel.WidthSecondPart,
+				HeightFirstPart = deliveryDetailsServiceModel.HeightFirstPart,
+				HeightSecondPart = deliveryDetailsServiceModel.HeightSecondPart,
+				Weight = deliveryDetailsServiceModel.Weight,
+				AdditionalDetails = deliveryDetailsServiceModel.AdditionalDetails,
+				CreateDate = deliveryDetailsServiceModel.CreateDate,
+				User = await this.userManager.FindByIdAsync(deliveryDetailsServiceModel.UserId),
+			};
+
+			return View(deliveryDetailsViewModel);
 		}
 
 		public async Task<IActionResult> SendOffer(

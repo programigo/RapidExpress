@@ -16,7 +16,7 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public DeliveryCategory Category { get; set; }
 
-		public string PickupLocation { get; set; }
+		public string PickUpLocation { get; set; }
 
 		public string DeliveryLocation { get; set; }
 

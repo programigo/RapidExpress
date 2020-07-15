@@ -117,7 +117,7 @@ namespace RapidExpress.Web.Controllers
 				Title = deliveryDetailsServiceModel.Title,
 				Price = deliveryDetailsServiceModel.Price,
 				Category = deliveryDetailsServiceModel.Category,
-				PickupLocation = deliveryDetailsServiceModel.PickupLocation,
+				PickUpLocation = deliveryDetailsServiceModel.PickUpLocation,
 				DeliveryLocation = deliveryDetailsServiceModel.DeliveryLocation,
 				CollectionDate = deliveryDetailsServiceModel.CollectionDate,
 				Photos = deliveryDetailsServiceModel.Photos,

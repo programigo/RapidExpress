@@ -22,7 +22,7 @@
 					<h4 class="card-title">
 						<a asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">@delivery.Title</a>
 					</h4>
-					<p class="card-text">@Localizer["Pick up location"]: @delivery.PickupLocation</p>
+					<p class="card-text">@Localizer["Pick up location"]: @delivery.PickUpLocation</p>
 					<p class="card-text">@Localizer["Delivery location"]: @delivery.DeliveryLocation</p>
 					<p class="card-text">@Localizer["Collection date"]: @delivery.CollectionDate.ToShortDateString()</p>
 				</div>

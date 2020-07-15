@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using RapidExpress.Common.Mapping;
-using RapidExpress.Data.Models;
+﻿using RapidExpress.Data.Models;
 using System;
 using System.Collections.Generic;
 
-namespace RapidExpress.Services.Models.Deliveries
+namespace RapidExpress.Web.Areas.Admin.Models
 {
-	public class DeliveryDetailsServiceModel : IMapFrom<Delivery>, IHaveCustomMapping
+	public class DeliveryDetailsViewModel
 	{
 		public int Id { get; set; }
 
@@ -64,11 +62,6 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public DateTime CreateDate { get; set; }
 
-		public string UserId { get; set; }
-
-		public void ConfigureMapping(Profile mapper)
-		=> mapper
-			.CreateMap<Delivery, DeliveryDetailsServiceModel>()
-			.ForMember(u => u.UserId, cfg => cfg.MapFrom(d => d.UserId));
+		public User User { get; set; }
 	}
 }

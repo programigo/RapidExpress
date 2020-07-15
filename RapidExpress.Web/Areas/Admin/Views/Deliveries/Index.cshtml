@@ -38,7 +38,7 @@
 		{
 			<tr data-toggle="collapse" href="#collapse-item-@delivery.Id">
 				<td>
-					<a asp-area="" asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">
+					<a asp-area="Admin" asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">
 						@delivery.Title
 					</a>
 				</td>
@@ -46,7 +46,7 @@
 					@delivery.Category
 				</td>
 				<td>
-					@delivery.PickupLocation
+					@delivery.PickUpLocation
 				</td>
 				<td>
 					@delivery.DeliveryLocation

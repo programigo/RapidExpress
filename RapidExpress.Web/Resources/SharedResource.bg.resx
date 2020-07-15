@@ -153,6 +153,12 @@
   <data name="Home And Garden" xml:space="preserve">
     <value>Дом и градина</value>
   </data>
+  <data name="Information For Delivery" xml:space="preserve">
+    <value>Информация за доставка</value>
+  </data>
+  <data name="Information For Pick Up" xml:space="preserve">
+    <value>Информация за вземане</value>
+  </data>
   <data name="Insurance" xml:space="preserve">
     <value>Застраховка</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="Location" xml:space="preserve">
     <value>Местоположение</value>
+  </data>
+  <data name="Main Information" xml:space="preserve">
+    <value>Основна информация</value>
   </data>
   <data name="Middle name" xml:space="preserve">
     <value>Презиме</value>
