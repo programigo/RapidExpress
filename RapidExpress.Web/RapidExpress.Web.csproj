@@ -31,7 +31,6 @@
     <Folder Include="Models\Account\" />
     <Folder Include="Resources\DataAnotationsErrorMessages\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Bids\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 

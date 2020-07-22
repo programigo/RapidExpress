@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.Extensions.Caching.Memory;
 using RapidExpress.Data;
 using RapidExpress.Data.Models;
 using RapidExpress.Services.Models.Deliveries;
@@ -11,19 +12,29 @@ namespace RapidExpress.Services.Implementations
 {
 	public class DeliveryService : IDeliveryService
 	{
+		private const string DeliveryCacheKey = "delivery-cache-key";
+
 		private readonly RapidExpressDbContext db;
 		private readonly IConfigurationProvider provider;
+		private readonly IMemoryCache memoryCache;
 
-		public DeliveryService(RapidExpressDbContext db, IConfigurationProvider provider)
+		public DeliveryService(RapidExpressDbContext db, IConfigurationProvider provider, IMemoryCache memoryCache)
 		{
 			this.db = db;
 			this.provider = provider;
+			this.memoryCache = memoryCache;
 		}
 
 		public int TotalDeliveries() => this.db.Deliveries.Count();
 
 		public IEnumerable<DeliveryListingServiceModel> All(int page = 1)
-			=> this.db
+		{
+			if (memoryCache.TryGetValue(DeliveryCacheKey, out List<DeliveryListingServiceModel> deliveries))
+			{
+				return deliveries;
+			}
+
+			deliveries = this.db
 				.Deliveries
 				.OrderByDescending(d => d.CreateDate)
 				.Skip((page - 1) * 10)
@@ -31,12 +42,29 @@ namespace RapidExpress.Services.Implementations
 				.ProjectTo<DeliveryListingServiceModel>(this.provider)
 				.ToList();
 
+			memoryCache.Set(DeliveryCacheKey, deliveries);
+
+			return deliveries;
+		}
+			
+
 		public IEnumerable<DeliveryListingServiceModel> All()
-			=> this.db
+		{
+			if (memoryCache.TryGetValue(DeliveryCacheKey, out List<DeliveryListingServiceModel> deliveries))
+			{
+				return deliveries;
+			}
+
+			deliveries = this.db
 				.Deliveries
 				.OrderByDescending(d => d.CreateDate)
 				.ProjectTo<DeliveryListingServiceModel>(this.provider)
 				.ToList();
+
+			memoryCache.Set(DeliveryCacheKey, deliveries);
+
+			return deliveries;
+		}
 
 		public Delivery Create(
 			string title,

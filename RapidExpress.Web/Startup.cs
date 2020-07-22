@@ -92,8 +92,6 @@ namespace RapidExpress.Web
 
 			StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
 
-			//this.CreateStripeCheckoutSession();
-
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
@@ -122,40 +120,6 @@ namespace RapidExpress.Web
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
 			});
-		}
-
-		private void CreateStripeCheckoutSession()
-		{
-			var options = new SessionCreateOptions
-			{
-				PaymentMethodTypes = new List<string>
-				{
-					"card",
-				},
-				LineItems = new List<SessionLineItemOptions>
-				{
-					new SessionLineItemOptions
-					{
-						Price = "{{PRICE_ID}}",
-						Quantity = 1,
-					},
-				},
-
-				Mode = "payment",
-				PaymentIntentData = new SessionPaymentIntentDataOptions
-				{
-					ApplicationFeeAmount = 200,
-				},
-				SuccessUrl = "https://example.com/success",
-				CancelUrl = "https://example.com/cancel",
-			};
-
-			var requestOptions = new RequestOptions
-			{
-				StripeAccount = "{{CONNECTED_STRIPE_ACCOUNT_ID}}",
-			};
-			var service = new SessionService();
-			Session session = service.Create(options, requestOptions);
 		}
 	}
 }

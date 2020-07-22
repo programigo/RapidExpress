@@ -1,6 +1,8 @@
 ﻿@model List<DeliveryItemViewModel>
 @inject IViewLocalizer Localizer
 
+@await Component.InvokeAsync("DeliveryFilter")
+
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>

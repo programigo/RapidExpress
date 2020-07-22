@@ -8,6 +8,7 @@ using RapidExpress.Services.Models.Deliveries;
 using RapidExpress.Web.Areas.Admin.Models;
 using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Bids;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,9 +32,28 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			this.emailSender = emailSender;
 		}
 
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(DeliveryFilterModel model)
 		{
 			IEnumerable<DeliveryListingServiceModel> serviceDeliveries = this.deliveryService.All();
+
+			serviceDeliveries = model.Category == null 
+				? serviceDeliveries
+				: serviceDeliveries.Where(d => d.Category == model.Category);
+
+			serviceDeliveries = string.IsNullOrEmpty(model.Location)
+				? serviceDeliveries
+				: serviceDeliveries.Where(d => d.DeliveryLocation.ToLower() == model.Location.ToLower());
+
+			if (model.StartDate != null && model.EndDate == null)
+			{
+				serviceDeliveries = serviceDeliveries.Where(d => d.CreateDate >= model.StartDate && d.CreateDate <= DateTime.UtcNow);
+			}
+
+			if (model.StartDate != null && model.EndDate != null)
+			{
+				serviceDeliveries = serviceDeliveries.Where(d => d.CreateDate >= model.StartDate && d.CreateDate <= model.EndDate);
+			}
+
 			var deliveries = new List<DeliveryItemViewModel>();
 
 			foreach (var serviceDelivery in serviceDeliveries)

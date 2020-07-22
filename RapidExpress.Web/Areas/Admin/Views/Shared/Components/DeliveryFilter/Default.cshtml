@@ -1,0 +1,59 @@
+﻿@model DeliveryFilterModel
+
+<form asp-controller="Deliveries" asp-action="Index" method="get">
+	<div class="form-row">
+		<div class="col">
+			<div class="form-group">
+				<label asp-for="Category">
+					Category
+				</label>
+				<select id="category-select" asp-for="Category" asp-items="Html.GetEnumSelectList<DeliveryCategory>()" class="form-control">
+					<option disabled selected>--- SELECT ---</option>
+				</select>
+			</div>
+		</div>
+		<div class="col">
+			<label asp-for="Location">
+				Delivery Location
+			</label>
+			<input id="location-input" asp-for="Location" type="text" />
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<label asp-for="StartDate">
+					Start Date
+				</label>
+				<input id="start-date-input" asp-for="StartDate" type="date" />
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<label asp-for="EndDate">
+					End Date
+				</label>
+				<input id="end-date-input" asp-for="EndDate" type="date" />
+			</div>
+		</div>
+		<div class="col mt-4">
+			<button type="submit"
+					class="btn btn-primary">
+				Filter
+			</button>
+			<button class="btn btn-info"
+					onclick="refreshPage()">
+				Reset
+			</button>
+		</div>
+	</div>
+</form>
+
+
+<script>
+	function refreshPage() {
+		$("#category-select").val("");
+		$("#location-input").val("");
+		$("#start-date-input").val("");
+		$("#end-date-input").val("");
+		window.location.replace("https://localhost:44315/Admin/Deliveries");
+	}
+</script>
