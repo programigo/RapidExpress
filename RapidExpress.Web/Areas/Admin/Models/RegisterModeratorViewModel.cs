@@ -4,37 +4,39 @@ namespace RapidExpress.Web.Areas.Admin.Models
 {
 	public class RegisterModeratorViewModel
 	{
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[StringLength(50)]
+		[Display(Name = "Username")]
 		public string Username { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[MinLength(2)]
 		[MaxLength(50)]
 		[Display(Name = "First name")]
 		public string FirstName { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[MinLength(2)]
 		[MaxLength(50)]
 		[Display(Name = "Middle name")]
 		public string MiddleName { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[MinLength(2)]
 		[MaxLength(50)]
 		[Display(Name = "Last name")]
 		public string LastName { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
+		[Display(Name = "City")]
 		public string City { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[EmailAddress]
 		[Display(Name = "Email")]
 		public string Email { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "The {0} field is required.")]
 		[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
 		[DataType(DataType.Password)]
 		[Display(Name = "Password")]

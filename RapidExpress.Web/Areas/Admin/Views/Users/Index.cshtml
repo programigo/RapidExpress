@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<AdminUserListingViewModel>
+@inject IViewLocalizer Localizer
 
 @{
-	ViewData["Title"] = "Users";
+	ViewData["Title"] = Localizer["Users"];
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -10,13 +11,13 @@
 	<thead>
 		<tr>
 			<th>
-				Username
+				@Localizer["Username"]
 			</th>
 			<th>
-				Email
+				@Localizer["Email"]
 			</th>
 			<th>
-				Actions
+				@Localizer["Actions"]
 			</th>
 		</tr>
 	</thead>
@@ -31,7 +32,9 @@
 					@user.Email
 				</th>
 				<th>
-					<a asp-controller="Users" asp-action="Remove" asp-route-id="@user.Id" class="btn btn-danger">Remove</a>
+					<a asp-controller="Users" asp-action="Remove" asp-route-id="@user.Id" class="btn btn-danger">
+						@Localizer["Remove"]
+					</a>
 				</th>
 			</tr>
 		}

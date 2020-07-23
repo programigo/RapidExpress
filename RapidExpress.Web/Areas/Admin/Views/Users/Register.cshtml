@@ -1,6 +1,8 @@
 ﻿@model RegisterModeratorViewModel
+@inject IViewLocalizer Localizer
+
 @{
-	ViewData["Title"] = "Register New Moderator";
+	ViewData["Title"] = Localizer["Register New Moderator"];
 }
 
 <h2 style="text-align: center">@ViewData["Title"]</h2>
@@ -11,7 +13,9 @@
 		<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
-				<label asp-for="Username"></label>
+				<label asp-for="Username">
+					@Localizer["Username"]
+				</label>
 				<input asp-for="Username" class="form-control" />
 				<span asp-validation-for="Username" class="text-danger"></span>
 			</div>
@@ -36,7 +40,9 @@
 				<span asp-validation-for="LastName" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="City"></label>
+				<label asp-for="City">
+					@Localizer["City"]
+				</label>
 				<input asp-for="City" class="form-control" />
 				<span asp-validation-for="City" class="text-danger"></span>
 			</div>
@@ -46,11 +52,15 @@
 				<span asp-validation-for="Password" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="ConfirmPassword"></label>
+				<label asp-for="ConfirmPassword">
+					@Localizer["ConfirmPassword"]
+				</label>
 				<input asp-for="ConfirmPassword" class="form-control" />
 				<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 			</div>
-			<button type="submit" class="btn btn-primary">Register</button>
+			<button type="submit" class="btn btn-primary">
+				@Localizer["Register"]
+			</button>
 		</form>
 	</div>
 </div>
