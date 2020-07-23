@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using RapidExpress.Data;
 using RapidExpress.Data.Models;
 using RapidExpress.Web.Infrastructure.Extensions;
@@ -16,8 +18,7 @@ using RapidExpress.Web.Models.Stripe;
 using RapidExpress.Web.Resources;
 using RapidExpress.Web.Resources.IdentityErrorMessages;
 using Stripe;
-using Stripe.Checkout;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection;
 
 namespace RapidExpress.Web
@@ -75,19 +76,23 @@ namespace RapidExpress.Web
 				});
 
 			services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+
+			services.Configure<RequestLocalizationOptions>(options =>
+			{
+				var supportedCultures = new[]
+				{
+					new CultureInfo("bg"),
+					new CultureInfo("en"),
+				};
+				options.DefaultRequestCulture = new RequestCulture("bg");
+				options.SupportedCultures = supportedCultures;
+				options.SupportedUICultures = supportedCultures;
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			string[] supportedCultures = new[] { "bg", "en" };
-			var localizationOptions = new RequestLocalizationOptions()
-				.SetDefaultCulture(supportedCultures[0])
-				.AddSupportedCultures(supportedCultures)
-				.AddSupportedUICultures(supportedCultures);
-
-			app.UseRequestLocalization(localizationOptions);
-
 			app.UseDatabaseMigration();
 
 			StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
@@ -106,6 +111,9 @@ namespace RapidExpress.Web
 			app.UseStaticFiles();
 
 			app.UseRouting();
+
+			var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+			app.UseRequestLocalization(localizationOptions);
 
 			app.UseAuthentication();
 			app.UseAuthorization();
