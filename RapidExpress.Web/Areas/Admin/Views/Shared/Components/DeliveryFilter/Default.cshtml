@@ -9,7 +9,9 @@
 					@Localizer["Category"]
 				</label>
 				<select id="category-select" asp-for="Category" asp-items="Html.GetEnumSelectList<DeliveryCategory>()" class="form-control">
-					<option disabled selected>--- SELECT ---</option>
+					<option disabled selected>
+						@Localizer["Select"]
+					</option>
 				</select>
 			</div>
 		</div>

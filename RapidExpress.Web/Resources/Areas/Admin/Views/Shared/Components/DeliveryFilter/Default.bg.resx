@@ -132,6 +132,9 @@
   <data name="Reset" xml:space="preserve">
     <value>Нулиране</value>
   </data>
+  <data name="Select" xml:space="preserve">
+    <value>Избери</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Начална дата</value>
   </data>

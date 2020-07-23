@@ -132,6 +132,9 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
   <data name="Start Date" xml:space="preserve">
     <value>Start Date</value>
   </data>

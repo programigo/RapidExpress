@@ -135,6 +135,9 @@
   <data name="Delivery Location" xml:space="preserve">
     <value>Delivery Location</value>
   </data>
+  <data name="No deliveries matching the search criteria" xml:space="preserve">
+    <value>No deliveries matching the search criteria</value>
+  </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Pick Up Location</value>
   </data>

@@ -3,98 +3,109 @@
 
 @await Component.InvokeAsync("DeliveryFilter")
 
-<table class="table table-bordered table-hover">
-	<thead>
-		<tr>
-			<th>
-				@Localizer["Title"]
-			</th>
-			<th>
-				@Localizer["Category"]
-			</th>
-			<th>
-				@Localizer["Pick Up Location"]
-			</th>
-			<th>
-				@Localizer["Delivery Location"]
-			</th>
-			<th>
-				@Localizer["Collection Date"]
-			</th>
-			<th>
-				@Localizer["Create Date"]
-			</th>
-			<th>
-				@Localizer["Price"]
-			</th>
-			<th>
-				@Localizer["Created by"]
-			</th>
-			<th>
-				@Localizer["Actions"]
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var delivery in Model)
-		{
-			<tr data-toggle="collapse" href="#collapse-item-@delivery.Id">
-				<td>
-					<a asp-area="Admin" asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">
-						@delivery.Title
-					</a>
-				</td>
-				<td>
-					@delivery.Category
-				</td>
-				<td>
-					@delivery.PickUpLocation
-				</td>
-				<td>
-					@delivery.DeliveryLocation
-				</td>
-				<td>
-					@delivery.CollectionDate.ToShortDateString()
-				</td>
-				<td>
-					@delivery.CreateDate.ToShortDateString()
-				</td>
-				<td>
-					@delivery.Price
-				</td>
-				<td>
-					@delivery.User.UserName
-				</td>
-				<td>
-					<a asp-controller="Deliveries" asp-action="Remove" asp-route-id="@delivery.Id" class="btn btn-danger">
-						@Localizer["Remove"]
-					</a>
-				</td>
-			</tr>
-			@foreach (var bid in delivery.Bids)
-			{
-				<tr id="collapse-item-@delivery.Id" class="collapse hide-table-padding bg-light">
-					<td>
-						@bid.Amount
-					</td>
-					<td>
-						@bid.Currency
-					</td>
-					<td>
-						<a asp-area="" asp-controller="Transporters" asp-action="Details" asp-route-id="@bid.UserId">
-							@bid.Username
-						</a>
-					</td>
-					<td>
-						<a asp-controller="Deliveries" asp-action="SendOffer" asp-route-bidId="@bid.Id" class="btn btn-success">
-							@Localizer["Send offer"]
-						</a>
-					</td>
+@if (Model.Count() > 0)
+{
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>
+						@Localizer["Title"]
+					</th>
+					<th>
+						@Localizer["Category"]
+					</th>
+					<th>
+						@Localizer["Pick Up Location"]
+					</th>
+					<th>
+						@Localizer["Delivery Location"]
+					</th>
+					<th>
+						@Localizer["Collection Date"]
+					</th>
+					<th>
+						@Localizer["Create Date"]
+					</th>
+					<th>
+						@Localizer["Price"]
+					</th>
+					<th>
+						@Localizer["Created by"]
+					</th>
+					<th>
+						@Localizer["Actions"]
+					</th>
 				</tr>
-			}
-		}
-	</tbody>
-</table>
+			</thead>
+			<tbody>
+				@foreach (var delivery in Model)
+				{
+					<tr data-toggle="collapse" href="#collapse-item-@delivery.Id">
+						<td>
+							<a asp-area="Admin" asp-controller="Deliveries" asp-action="Details" asp-route-id="@delivery.Id">
+								@delivery.Title
+							</a>
+						</td>
+						<td>
+							@delivery.Category
+						</td>
+						<td>
+							@delivery.PickUpLocation
+						</td>
+						<td>
+							@delivery.DeliveryLocation
+						</td>
+						<td>
+							@delivery.CollectionDate.ToShortDateString()
+						</td>
+						<td>
+							@delivery.CreateDate.ToShortDateString()
+						</td>
+						<td>
+							@delivery.Price
+						</td>
+						<td>
+							@delivery.User.UserName
+						</td>
+						<td>
+							<a asp-controller="Deliveries" asp-action="Remove" asp-route-id="@delivery.Id" class="btn btn-danger">
+								@Localizer["Remove"]
+							</a>
+						</td>
+					</tr>
+					@foreach (var bid in delivery.Bids)
+					{
+						<tr id="collapse-item-@delivery.Id" class="collapse hide-table-padding bg-light">
+							<td>
+								@bid.Amount
+							</td>
+							<td>
+								@bid.Currency
+							</td>
+							<td>
+								<a asp-area="" asp-controller="Transporters" asp-action="Details" asp-route-id="@bid.UserId">
+									@bid.Username
+								</a>
+							</td>
+							<td>
+								<a asp-controller="Deliveries" asp-action="SendOffer" asp-route-bidId="@bid.Id" class="btn btn-success">
+									@Localizer["Send offer"]
+								</a>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+}
+else
+{
+	<p style="text-align:center">
+		@Localizer["No deliveries matching the search criteria"]
+	</p>
+}
 
 <style>
 	tr.hide-table-padding td {
