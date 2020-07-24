@@ -5,7 +5,9 @@
 	ViewData["Title"] = Localizer["Users"];
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 style="text-align:center">
+	@ViewData["Title"]
+</h1>
 
 <table class="table table-bordered table-hover">
 	<thead>
@@ -17,6 +19,9 @@
 				@Localizer["Email"]
 			</th>
 			<th>
+				@Localizer["Role"]
+			</th>
+			<th>
 				@Localizer["Actions"]
 			</th>
 		</tr>
@@ -25,17 +30,22 @@
 		@foreach (var user in Model)
 		{
 			<tr>
-				<th>
-					@user.Username
-				</th>
-				<th>
+				<td>
+					<a asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">
+						@user.Username
+					</a>
+				</td>
+				<td>
 					@user.Email
-				</th>
-				<th>
+				</td>
+				<td>
+					@Localizer[user.Role]
+				</td>
+				<td>
 					<a asp-controller="Users" asp-action="Remove" asp-route-id="@user.Id" class="btn btn-danger">
 						@Localizer["Remove"]
 					</a>
-				</th>
+				</td>
 			</tr>
 		}
 	</tbody>

@@ -1,6 +1,10 @@
 ﻿@model List<DeliveryItemViewModel>
 @inject IViewLocalizer Localizer
 
+@{
+	ViewData["Title"] = Localizer["All Deliveries"];
+}
+
 @await Component.InvokeAsync("DeliveryFilter")
 
 @if (Model.Count() > 0)

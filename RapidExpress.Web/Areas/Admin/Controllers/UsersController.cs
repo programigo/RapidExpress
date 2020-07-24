@@ -55,6 +55,23 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			return RedirectToAction(nameof(Pending));
 		}
 
+		public async Task<IActionResult> Details(string id)
+		{
+			User user = await _userManager.FindByIdAsync(id);
+
+			AdminUserDetailsViewModel result = new AdminUserDetailsViewModel
+			{
+				Username = user.UserName,
+				FirstName = user.FirstName,
+				MiddleName = user.MiddleName,
+				LastName = user.LastName,
+				Email = user.Email,
+				Phone = user.PhoneNumber,
+			};
+
+			return View(result);
+		}
+
 		public IActionResult Pending()
 		{
 			List<AdminUserListingViewModel> users = this.users

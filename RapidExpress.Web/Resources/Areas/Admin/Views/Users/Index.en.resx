@@ -120,11 +120,20 @@
   <data name="Actions" xml:space="preserve">
     <value>Actions</value>
   </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Transporter" xml:space="preserve">
+    <value>Transporter</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

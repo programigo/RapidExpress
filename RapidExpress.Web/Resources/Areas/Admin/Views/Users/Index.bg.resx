@@ -120,11 +120,20 @@
   <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Имейл</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Премахни</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Роля</value>
+  </data>
+  <data name="Transporter" xml:space="preserve">
+    <value>Транспортьор</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>

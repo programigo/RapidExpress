@@ -1,0 +1,75 @@
+﻿@model AdminUserDetailsViewModel
+@inject IViewLocalizer Localizer
+
+@{
+	ViewData["Title"] = Localizer["User Details"];
+}
+
+<h1>
+	@Model.FirstName @Model.LastName
+</h1>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["Username"]:
+				</strong>
+			</td>
+			<td>
+				@Model.Username
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["Email"]:
+				</strong>
+			</td>
+			<td>
+				@Model.Email
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["First name"]:
+				</strong>
+			</td>
+			<td>
+				@Model.FirstName
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["Middle name"]:
+				</strong>
+			</td>
+			<td>
+				@Model.MiddleName
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["Last name"]:
+				</strong>
+			</td>
+			<td>
+				@Model.LastName
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					@Localizer["Phone number"]:
+				</strong>
+			</td>
+			<td>
+				@Model.Phone
+			</td>
+		</tr>
+	</tbody>
+</table>
