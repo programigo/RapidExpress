@@ -6,8 +6,6 @@ namespace RapidExpress.Web.Models.Manage
     {
         public string Username { get; set; }
 
-        public bool IsEmailConfirmed { get; set; }
-
         [Required(ErrorMessage = "The {0} field is required.")]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -50,8 +50,8 @@ namespace RapidExpress.Web.Controllers
 					}
 				},
 				Mode = "payment",
-				SuccessUrl = "https://localhost:44315",
-				CancelUrl = "https://localhost:44315",
+				SuccessUrl = $"https://{GlobalConstants.RapidExpressUrl}",
+				CancelUrl = $"https://{GlobalConstants.RapidExpressUrl}",
 			};
 
 			Session session = this.sessionService.Create(options);

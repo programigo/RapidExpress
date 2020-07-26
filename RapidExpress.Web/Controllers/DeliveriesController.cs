@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using RapidExpress.Data.Models;
 using RapidExpress.Services;
 using RapidExpress.Services.Models.Deliveries;
+using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Deliveries;
 using System;
 using System.Collections.Generic;
@@ -21,13 +23,20 @@ namespace RapidExpress.Web.Controllers
 		private readonly IDeliveryService deliveryService;
 		private readonly IWebHostEnvironment hostingEnvironment;
 		private readonly IEmailSender emailSender;
+		private readonly IStringLocalizer<DeliveriesController> localizer;
 
-		public DeliveriesController(UserManager<User> userManager, IDeliveryService deliveryService, IWebHostEnvironment hostingEnvironment, IEmailSender emailSender)
+		public DeliveriesController(
+			UserManager<User> userManager,
+			IDeliveryService deliveryService,
+			IWebHostEnvironment hostingEnvironment,
+			IEmailSender emailSender,
+			IStringLocalizer<DeliveriesController> localizer)
 		{
 			this.userManager = userManager;
 			this.deliveryService = deliveryService;
 			this.hostingEnvironment = hostingEnvironment;
 			this.emailSender = emailSender;
+			this.localizer = localizer;
 		}
 
 		public IActionResult Index(int page = 1)
@@ -96,8 +105,10 @@ namespace RapidExpress.Web.Controllers
 				foreach (var transporter in transporters)
 				{
 					await this.emailSender.SendEmailAsync(
-						transporter.Email, "New delivery created", $"For more information visit https://localhost:44315/Details/{delivery.Id}");
+						transporter.Email, "Създадена е нова доставка", $"За повече информация посетете https://{GlobalConstants.RapidExpressUrl}/Details/{delivery.Id}");
 				}
+
+				TempData.AddSuccessMessage(localizer["Delivery {0} created successfully.", model.Title]);
 
 				return RedirectToAction(nameof(HomeController.Index), "Home");
 			}

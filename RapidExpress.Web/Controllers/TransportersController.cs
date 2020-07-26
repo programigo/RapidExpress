@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using RapidExpress.Data.Models;
+using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Transporters;
 using System.Threading.Tasks;
 
@@ -13,15 +15,18 @@ namespace RapidExpress.Web.Controllers
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
 		private readonly ILogger _logger;
+		private readonly IStringLocalizer<TransportersController> localizer;
 
 		public TransportersController(
 			UserManager<User> userManager,
 			SignInManager<User> signInManager,
-			ILogger<TransportersController> logger)
+			ILogger<TransportersController> logger,
+			IStringLocalizer<TransportersController> localizer)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_logger = logger;
+			this.localizer = localizer;
 		}
 
 		public async Task<IActionResult> Details(string id)
@@ -37,6 +42,8 @@ namespace RapidExpress.Web.Controllers
 				Email = user.Email,
 				Phone = user.PhoneNumber,
 			};
+
+			TempData.AddSuccessMessage(localizer["Registration successfull. You must wait to be approved by administrator."]);
 
 			return View(result);
 		}

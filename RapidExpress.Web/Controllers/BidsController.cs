@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using RapidExpress.Data.Models;
 using RapidExpress.Services;
+using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Bids;
 
 namespace RapidExpress.Web.Controllers
@@ -12,11 +14,16 @@ namespace RapidExpress.Web.Controllers
 	{
 		private UserManager<User> userManager;
 		private readonly IBidService bidService;
+		private readonly IStringLocalizer<BidsController> localizer;
 
-		public BidsController(UserManager<User> userManager, IBidService bidService)
+		public BidsController(
+			UserManager<User> userManager,
+			IBidService bidService,
+			IStringLocalizer<BidsController> localizer)
 		{
 			this.userManager = userManager;
 			this.bidService = bidService;
+			this.localizer = localizer;
 		}
 
 		public IActionResult Index()
@@ -37,6 +44,8 @@ namespace RapidExpress.Web.Controllers
 					model.Currency,
 					model.DeliveryId,
 					this.userManager.GetUserId(User));
+
+			TempData.AddSuccessMessage(localizer["Bid created successfully."]);
 
 			return RedirectToAction(nameof(HomeController.Index), "Home");
 		}

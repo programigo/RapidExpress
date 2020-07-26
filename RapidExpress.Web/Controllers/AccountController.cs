@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using RapidExpress.Data.Models;
 using RapidExpress.Services.Admin;
@@ -22,22 +23,23 @@ namespace RapidExpress.Web.Controllers
 	{
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
-		private readonly ILogger _logger;
 		private readonly IAdminUserService _users;
 		private readonly IEmailSender _emailSender;
+		private readonly IStringLocalizer<AccountController> localizer;
 
 		public AccountController(
 			UserManager<User> userManager,
 			SignInManager<User> signInManager,
 			ILogger<AccountController> logger,
 			IAdminUserService users,
-			IEmailSender emailSender)
+			IEmailSender emailSender,
+			IStringLocalizer<AccountController> localizer)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
-			_logger = logger;
 			_users = users;
 			_emailSender = emailSender;
+			this.localizer = localizer;
 		}
 
 		[TempData]
@@ -79,28 +81,26 @@ namespace RapidExpress.Web.Controllers
 
 				if (user == null)
 				{
-					ModelState.AddModelError(string.Empty, "No such user exists.");
+					ModelState.AddModelError(string.Empty, localizer["No such user exists."]);
 					return View(model);
 				}
 				if (isApprovedUser == false)
 				{
-					ModelState.AddModelError(string.Empty, "You must wait to be approved by administrator.");
+					ModelState.AddModelError(string.Empty, localizer["You must wait to be approved by administrator."]);
 					return View(model);
 				}
 				var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, lockoutOnFailure: false);
 				if (result.Succeeded && isApprovedUser)
 				{
-					_logger.LogInformation("User logged in.");
 					return RedirectToLocal(returnUrl);
 				}
 				if (result.IsLockedOut)
 				{
-					_logger.LogWarning("User account locked out.");
 					return RedirectToAction(nameof(Lockout));
 				}
 				else
 				{
-					ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+					ModelState.AddModelError(string.Empty, localizer["Invalid login attempt."]);
 					return View(model);
 				}
 			}
@@ -160,12 +160,6 @@ namespace RapidExpress.Web.Controllers
 				var returnResult = new IdentityResult();
 				if (result.Succeeded && user.IsApproved)
 				{
-					_logger.LogInformation("User created a new account with password.");
-
-					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-					//var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-					//await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
 					var signInUser = new User
 					{
 						UserName = model.Username,
@@ -175,7 +169,6 @@ namespace RapidExpress.Web.Controllers
 					};
 
 					await _signInManager.SignInAsync(signInUser, isPersistent: false);
-					_logger.LogInformation("User created a new account with password.");
 					return RedirectToLocal(returnUrl);
 				}
 				else
@@ -195,7 +188,6 @@ namespace RapidExpress.Web.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await _signInManager.SignOutAsync();
-			_logger.LogInformation("User logged out.");
 			return RedirectToAction(nameof(AccountController.Login), "Account");
 		}
 
@@ -237,7 +229,6 @@ namespace RapidExpress.Web.Controllers
 			var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
 			if (result.Succeeded)
 			{
-				_logger.LogInformation("User logged in with {Name} provider.", info.LoginProvider);
 				return RedirectToLocal(returnUrl);
 			}
 			if (result.IsLockedOut)
@@ -278,7 +269,6 @@ namespace RapidExpress.Web.Controllers
 						var signInUser = new User { UserName = model.Email, Email = model.Email };
 
 						await _signInManager.SignInAsync(signInUser, isPersistent: false);
-						_logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 						return RedirectToLocal(returnUrl);
 					}
 				}

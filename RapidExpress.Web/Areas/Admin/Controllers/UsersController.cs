@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using RapidExpress.Data.Models;
 using RapidExpress.Services.Admin;
 using RapidExpress.Web.Areas.Admin.Models;
@@ -21,17 +22,20 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
 		private readonly IConfigurationProvider provider;
+		private readonly IStringLocalizer<UsersController> localizer;
 
 		public UsersController(
 			IAdminUserService users,
 			UserManager<User> userManager,
 			SignInManager<User> signInManager,
-			IConfigurationProvider provider)
+			IConfigurationProvider provider,
+			IStringLocalizer<UsersController> localizer)
 		{
 			this.users = users;
 			_userManager = userManager;
 			_signInManager = signInManager;
 			this.provider = provider;
+			this.localizer = localizer;
 		}
 
 		public IActionResult Index()
@@ -50,7 +54,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 
 			await _userManager.AddToRoleAsync(user, GlobalConstants.TransporterRole);
 
-			TempData.AddSuccessMessage($"User {user.UserName} successfully approved.");
+			TempData.AddSuccessMessage(localizer["User {0} successfully approved.", user.UserName]);
 
 			return RedirectToAction(nameof(Pending));
 		}
@@ -128,7 +132,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 
 			this.users.Remove(id);
 
-			TempData.AddSuccessMessage($"User {user.UserName} successfully removed");
+			TempData.AddSuccessMessage(localizer["User {0} successfully removed.", user.UserName]);
 
 			return RedirectToAction(nameof(Index));
 		}

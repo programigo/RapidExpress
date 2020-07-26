@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using RapidExpress.Data.Models;
 using RapidExpress.Services;
 using RapidExpress.Services.Models.Deliveries;
@@ -23,13 +24,20 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 		private readonly IDeliveryService deliveryService;
 		private readonly IBidService bidService;
 		private readonly IEmailSender emailSender;
+		private readonly IStringLocalizer<DeliveriesController> localizer;
 
-		public DeliveriesController(UserManager<User> userManager, IDeliveryService deliveryService, IBidService bidService, IEmailSender emailSender)
+		public DeliveriesController(
+			UserManager<User> userManager,
+			IDeliveryService deliveryService,
+			IBidService bidService,
+			IEmailSender emailSender,
+			IStringLocalizer<DeliveriesController> localizer)
 		{
 			this.userManager = userManager;
 			this.deliveryService = deliveryService;
 			this.bidService = bidService;
 			this.emailSender = emailSender;
+			this.localizer = localizer;
 		}
 
 		public async Task<IActionResult> Index(DeliveryFilterModel model)
@@ -137,8 +145,8 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 
 			await this.emailSender.SendEmailAsync(
 				client.Email,
-				$"You have a new offer for delivery {delivery.Title}",
-				$"A new offer for delivery {delivery.Title} has been recieved. Visit https://localhost:44315/Checkout?bidId={bidId} to make a payment.");
+				$"Имате нова оферта за доставка {delivery.Title}",
+				$"Получена е нова оферта за доставка {delivery.Title}. Посетете https://{GlobalConstants.RapidExpressUrl}/Checkout?bidId={bidId} за да направите плащане.");
 
 			return RedirectToAction(nameof(Index));
 		}
@@ -147,7 +155,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 		{
 			this.deliveryService.Remove(id);
 
-			TempData.AddSuccessMessage($"Delivery successfully removed");
+			TempData.AddSuccessMessage(localizer["Delivery successfully removed."]);
 
 			return RedirectToAction(nameof(Index));
 		}

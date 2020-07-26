@@ -112,6 +112,13 @@
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD2sQdRrCe5JPI47nmVm_Vcn4BwC4hA5g&libraries=places"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script>
+		window.setTimeout(function () {
+			$(".alert").fadeTo(500, 0).slideUp(500, function () {
+				$(this).remove();
+			});
+		}, 3000);
+	</script>
 	@RenderSection("Scripts", required: false)
 </body>
 </html>
