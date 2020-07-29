@@ -1,42 +1,46 @@
 ﻿@model BidFormModel
 @inject IViewLocalizer Localizer
 
-<form method="post" onsubmit="return validateAmount()" asp-controller="Bids" asp-action="Create">
-	<div class="form-group">
-		<label asp-for="Amount">
-			@Localizer["Amount"]
-		</label>
-		<input id="bid-amount" type="number" min="0" step="1" asp-for="Amount" class="first-part-input form-control mb-1" />
-		<span asp-validation-for="Amount" class="text-danger"></span>
-		<span class="amount-error text-danger" style="display:none">Bid amount must be at least 1.</span>
-	</div>
-	<div class="form-group">
-		<label asp-for="Currency">
-			@Localizer["Currency"]
-		</label>
-		<select asp-for="Currency" asp-items="Html.GetEnumSelectList<BidCurrency>()" class="form-control"></select>
-		<span asp-validation-for="Currency" class="text-danger"></span>
-	</div>
-	<div class="form-group">
-		<input type="hidden" asp-for="@Model.DeliveryId" value="@Model.DeliveryId" />
-	</div>
-	<button type="submit" class="btn btn-success">
-		@Localizer["Create Bid"]
-	</button>
-</form>
+<button class="btn btn-primary" data-toggle="modal" data-target="#bid-modal-@Model.DeliveryId">
+	@Localizer["Add Bid"]
+</button>
 
-@section Scripts{
-	@await Html.PartialAsync("_ValidationScriptsPartial")
+<div class="modal fade" id="bid-modal-@Model.DeliveryId" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					@Model.DeliveryTitle
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="post" asp-controller="Bids" asp-action="Create">
+					<div class="form-group">
+						<label asp-for="Amount">
+							@Localizer["Amount"]
+						</label>
+						<input required type="number" min="10" step="1" asp-for="Amount" class="first-part-input form-control mb-1" />
+						<span asp-validation-for="Amount" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Currency">
+							@Localizer["Currency"]
+						</label>
+						<select asp-for="Currency" asp-items="Html.GetEnumSelectList<BidCurrency>()" class="form-control"></select>
+						<span asp-validation-for="Currency" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="hidden" asp-for="@Model.DeliveryId" value="@Model.DeliveryId" />
+					</div>
+					<button type="submit" class="btn btn-success">
+						@Localizer["Create Bid"]
+					</button>
+				</form>
+			</div>
 
-	<script>
-		function validateAmount() {
-			var amount = $("#bid-amount").val();
-			if (amount == 0) {
-				$("#amount-error").show();
-				return false;
-			}
-			$("#amount-error").hide();
-			return true;
-		};
-	</script>
-}
+		</div>
+	</div>
+</div>

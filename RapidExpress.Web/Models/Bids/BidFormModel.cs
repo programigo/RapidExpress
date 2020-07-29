@@ -12,5 +12,7 @@ namespace RapidExpress.Web.Models.Bids
 		public BidCurrency Currency { get; set; }
 
 		public int DeliveryId { get; set; }
+
+		public string DeliveryTitle { get; set; }
 	}
 }

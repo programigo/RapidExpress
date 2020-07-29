@@ -47,7 +47,7 @@ namespace RapidExpress.Web.Controllers
 
 			TempData.AddSuccessMessage(localizer["Bid created successfully."]);
 
-			return RedirectToAction(nameof(HomeController.Index), "Home");
+			return RedirectToAction(nameof(DeliveriesController.Index), "Deliveries");
 		}
 	}
 }

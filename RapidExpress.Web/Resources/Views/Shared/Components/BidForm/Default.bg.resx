@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add Bid" xml:space="preserve">
+    <value>Добавете оферта</value>
+  </data>
   <data name="Amount" xml:space="preserve">
     <value>Сума</value>
+  </data>
+  <data name="Bid amount must be at least 1." xml:space="preserve">
+    <value>Сумата на офертата трябва да бъде най-малко 1.</value>
   </data>
   <data name="Create Bid" xml:space="preserve">
     <value>Създай оферта</value>

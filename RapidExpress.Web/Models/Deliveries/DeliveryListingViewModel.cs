@@ -10,7 +10,7 @@ namespace RapidExpress.Web.Models.Deliveries
 
 		public int TotalDeliveries { get; set; }
 
-		public int TotalPages => (int)Math.Ceiling((double)this.TotalDeliveries / 10);
+		public int TotalPages => (int)Math.Ceiling((double)this.TotalDeliveries / 12);
 
 		public int CurrentPage { get; set; }
 

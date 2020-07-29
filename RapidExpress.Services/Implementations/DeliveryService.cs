@@ -29,20 +29,13 @@ namespace RapidExpress.Services.Implementations
 
 		public IEnumerable<DeliveryListingServiceModel> All(int page = 1)
 		{
-			if (memoryCache.TryGetValue(DeliveryCacheKey, out List<DeliveryListingServiceModel> deliveries))
-			{
-				return deliveries;
-			}
-
-			deliveries = this.db
+			var deliveries = this.db
 				.Deliveries
 				.OrderByDescending(d => d.CreateDate)
-				.Skip((page - 1) * 10)
-				.Take(10)
+				.Skip((page - 1) * 12)
+				.Take(12)
 				.ProjectTo<DeliveryListingServiceModel>(this.provider)
 				.ToList();
-
-			memoryCache.Set(DeliveryCacheKey, deliveries);
 
 			return deliveries;
 		}
@@ -50,18 +43,11 @@ namespace RapidExpress.Services.Implementations
 
 		public IEnumerable<DeliveryListingServiceModel> All()
 		{
-			if (memoryCache.TryGetValue(DeliveryCacheKey, out List<DeliveryListingServiceModel> deliveries))
-			{
-				return deliveries;
-			}
-
-			deliveries = this.db
+			var deliveries = this.db
 				.Deliveries
 				.OrderByDescending(d => d.CreateDate)
 				.ProjectTo<DeliveryListingServiceModel>(this.provider)
 				.ToList();
-
-			memoryCache.Set(DeliveryCacheKey, deliveries);
 
 			return deliveries;
 		}

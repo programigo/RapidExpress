@@ -40,12 +40,16 @@ namespace RapidExpress.Web.Controllers
 		}
 
 		public IActionResult Index(int page = 1)
-			=> View(new DeliveryListingViewModel
+		{
+			var deliveries = new DeliveryListingViewModel
 			{
 				Deliveries = this.deliveryService.All(page),
 				TotalDeliveries = this.deliveryService.TotalDeliveries(),
 				CurrentPage = page,
-			});
+			};
+
+			return View(deliveries);
+		}
 
 		[Authorize(Roles = GlobalConstants.AdministratorRole + ", " + GlobalConstants.CustomerRole)]
 		public IActionResult Create() => View();

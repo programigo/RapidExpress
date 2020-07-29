@@ -123,8 +123,14 @@
   <data name="Delivery location" xml:space="preserve">
     <value>Място за доставка</value>
   </data>
+  <data name="Next page" xml:space="preserve">
+    <value>Следваща страница</value>
+  </data>
   <data name="Pick up location" xml:space="preserve">
     <value>Място за прием</value>
+  </data>
+  <data name="Previous page" xml:space="preserve">
+    <value>Предишна страница</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Премахни</value>
