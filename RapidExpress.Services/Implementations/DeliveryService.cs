@@ -12,17 +12,13 @@ namespace RapidExpress.Services.Implementations
 {
 	public class DeliveryService : IDeliveryService
 	{
-		private const string DeliveryCacheKey = "delivery-cache-key";
-
 		private readonly RapidExpressDbContext db;
 		private readonly IConfigurationProvider provider;
-		private readonly IMemoryCache memoryCache;
 
-		public DeliveryService(RapidExpressDbContext db, IConfigurationProvider provider, IMemoryCache memoryCache)
+		public DeliveryService(RapidExpressDbContext db, IConfigurationProvider provider)
 		{
 			this.db = db;
 			this.provider = provider;
-			this.memoryCache = memoryCache;
 		}
 
 		public int TotalDeliveries() => this.db.Deliveries.Count();
