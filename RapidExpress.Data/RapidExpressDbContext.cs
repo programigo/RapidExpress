@@ -18,10 +18,18 @@ namespace RapidExpress.Data
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder
+				.Entity<User>()
+				.HasMany(u => u.Deliveries)
+				.WithOne(d => d.User)
+				.HasForeignKey(d => d.UserId)
+				.OnDelete(DeleteBehavior.Cascade);
+
+			builder
 				.Entity<Delivery>()
 				.HasOne(d => d.User)
 				.WithMany(u => u.Deliveries)
-				.HasForeignKey(d => d.UserId);
+				.HasForeignKey(d => d.UserId)
+				.OnDelete(DeleteBehavior.Cascade);
 
 			builder
 				.Entity<Bid>()

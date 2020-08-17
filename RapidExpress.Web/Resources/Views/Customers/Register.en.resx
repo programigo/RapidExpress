@@ -139,10 +139,10 @@
     <value>Password</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Телефон за връзка</value>
+    <value>Phone</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Phone</value>
+    <value>Register</value>
   </data>
   <data name="Register As Customer" xml:space="preserve">
     <value>Register As Customer</value>

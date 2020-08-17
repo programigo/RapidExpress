@@ -10,7 +10,7 @@ namespace RapidExpress.Data.Models
 
 		public string Title { get; set; }
 
-		public int Price { get; set; }
+		public int? Price { get; set; }
 
 		public DeliveryCategory Category { get; set; }
 
@@ -55,15 +55,15 @@ namespace RapidExpress.Data.Models
 
 		public List<Photo> Photos { get; set; } = new List<Photo>();
 
-		public int LengthFirstPart { get; set; }
+		public int? LengthFirstPart { get; set; }
 
 		public int? LengthSecondPart { get; set; }
 
-		public int WidthFirstPart { get; set; }
+		public int? WidthFirstPart { get; set; }
 
 		public int? WidthSecondPart { get; set; }
 
-		public int HeightFirstPart { get; set; }
+		public int? HeightFirstPart { get; set; }
 
 		public int? HeightSecondPart { get; set; }
 

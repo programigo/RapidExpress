@@ -50,7 +50,7 @@ namespace RapidExpress.Services.Implementations
 
 		public Delivery Create(
 			string title,
-			int price,
+			int? price,
 			DeliveryCategory category,
 			bool hasInsurance,
 			PropertyType pickUpPropertyType,
@@ -67,11 +67,11 @@ namespace RapidExpress.Services.Implementations
 			string recipientEmail,
 			DateTime collectionDate,
 			IEnumerable<string> photoPaths,
-			int lengthFirstPart,
+			int? lengthFirstPart,
 			int? lengthSecondPart,
-			int widthFirstPart,
+			int? widthFirstPart,
 			int? widthSecondPart,
-			int heightFirstPart,
+			int? heightFirstPart,
 			int? heightSecondPart,
 			int weight,
 			string additionalDetails,

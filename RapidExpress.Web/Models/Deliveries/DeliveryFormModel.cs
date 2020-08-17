@@ -13,9 +13,8 @@ namespace RapidExpress.Web.Models.Deliveries
 		[Display(Name = "Title")]
 		public string Title { get; set; }
 
-		[Required(ErrorMessage = "The {0} field is required.")]
 		[Display(Name = "Price")]
-		public int Price { get; set; }
+		public int? Price { get; set; }
 
 		public DeliveryCategory Category { get; set; }
 
@@ -79,18 +78,15 @@ namespace RapidExpress.Web.Models.Deliveries
 
 		public List<IFormFile> Photos { get; set; }
 
-		[Required(ErrorMessage = "This field is required.")]
-		public int LengthFirstPart { get; set; }
+		public int? LengthFirstPart { get; set; }
 
 		public int? LengthSecondPart { get; set; }
 
-		[Required(ErrorMessage = "This field is required.")]
-		public int WidthFirstPart { get; set; }
+		public int? WidthFirstPart { get; set; }
 
 		public int? WidthSecondPart { get; set; }
 
-		[Required(ErrorMessage = "This field is required.")]
-		public int HeightFirstPart { get; set; }
+		public int? HeightFirstPart { get; set; }
 
 		public int? HeightSecondPart { get; set; }
 

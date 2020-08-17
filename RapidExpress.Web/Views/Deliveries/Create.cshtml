@@ -29,7 +29,7 @@
 				<div class="col">
 					<div class="form-group">
 						<label asp-for="Price">
-							@Localizer["Price"]
+							@Localizer["Price (optional)"]
 						</label>
 						<input type="number" min="0" step="1" placeholder="BGN" asp-for="Price" class="weight-input form-control" />
 						<span asp-validation-for="Price" class="text-danger">
@@ -74,7 +74,12 @@
 				</div>
 			</div>
 
+			<label>
+				@Localizer["Dimensions (optional)"]
+			</label>
+
 			<div class="form-row">
+
 				<div class="col">
 					<div class="form-group">
 						<label asp-for="LengthFirstPart">
@@ -165,7 +170,7 @@
 				<div class="row">
 					<div class="col">
 						<legend class="col-form-label">
-							@Localizer["Property Type"]
+							@Localizer["Delivery To"]
 						</legend>
 						<div class="form-check">
 							@Html.RadioButtonFor(m => m.PickUpPropertyType, PropertyType.Business, new { id = "pickup-business-checkbox" })
@@ -173,7 +178,9 @@
 						</div>
 						<div class="form-check">
 							@Html.RadioButtonFor(m => m.PickUpPropertyType, PropertyType.Private, new { id = "pickup-private-checkbox" })
-							<label for="pickup-private-checkbox">@Localizer["Private"]</label>
+							<label for="pickup-private-checkbox">
+								@Localizer["Person"]
+							</label>
 						</div>
 					</div>
 				</div>
@@ -246,7 +253,7 @@
 				<div class="row">
 					<div class="col">
 						<legend class="col-form-label">
-							@Localizer["Property Type"]
+							@Localizer["Delivery To"]
 						</legend>
 						<div class="form-check">
 							@Html.RadioButtonFor(m => m.DeliveryPropertyType, PropertyType.Business, new { id = "delivery-business-checkbox" })
@@ -254,7 +261,9 @@
 						</div>
 						<div class="form-check">
 							@Html.RadioButtonFor(m => m.DeliveryPropertyType, PropertyType.Private, new { id = "delivery-private-checkbox" })
-							<label for="delivery-private-checkbox">@Localizer["Private"]</label>
+							<label for="delivery-private-checkbox">
+								@Localizer["Person"]
+							</label>
 						</div>
 					</div>
 				</div>

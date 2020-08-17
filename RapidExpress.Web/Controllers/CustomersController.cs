@@ -66,12 +66,14 @@ namespace RapidExpress.Web.Controllers
 
 					_logger.LogInformation("User created a new account with password.");
 
+					TempData.AddSuccessMessage(localizer["Registration successfull."]);
+
 					return RedirectToLocal(returnUrl);
 				}
 				AddErrors(result);
 			}
 
-			TempData.AddSuccessMessage(localizer["Registration successfull."]);
+			
 
 			return View(model);
 		}

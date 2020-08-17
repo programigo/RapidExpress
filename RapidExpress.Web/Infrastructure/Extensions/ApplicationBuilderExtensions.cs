@@ -57,6 +57,7 @@ namespace RapidExpress.Web.Infrastructure.Extensions
 							FirstName = "Alex",
 							MiddleName = "Rapid",
 							LastName = "Express",
+							City = "Sofia",
 							Role = GlobalConstants.AdministratorRole,
 							IsApproved = true,
 

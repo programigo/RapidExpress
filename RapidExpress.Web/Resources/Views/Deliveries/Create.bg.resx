@@ -144,6 +144,12 @@
   <data name="Delivery Location" xml:space="preserve">
     <value>Населено място за доставка</value>
   </data>
+  <data name="Delivery To" xml:space="preserve">
+    <value>Доставка до</value>
+  </data>
+  <data name="Dimensions (optional)" xml:space="preserve">
+    <value>Размери (незадължително)</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Имейл</value>
   </data>
@@ -177,20 +183,17 @@
   <data name="No" xml:space="preserve">
     <value>Не</value>
   </data>
+  <data name="Person" xml:space="preserve">
+    <value>Лице</value>
+  </data>
   <data name="Phone Number" xml:space="preserve">
     <value>Телефонен номер</value>
   </data>
   <data name="Photos" xml:space="preserve">
     <value>Снимки</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Цена</value>
-  </data>
-  <data name="Private" xml:space="preserve">
-    <value>Частна собственост</value>
-  </data>
-  <data name="Property Type" xml:space="preserve">
-    <value>Тип на имота</value>
+  <data name="Price (optional)" xml:space="preserve">
+    <value>Цена (незадължително)</value>
   </data>
   <data name="Street" xml:space="preserve">
     <value>Улица</value>
