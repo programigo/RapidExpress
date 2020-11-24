@@ -150,6 +150,9 @@
   <data name="Food" xml:space="preserve">
     <value>Food</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Goods Value</value>
+  </data>
   <data name="Home And Garden" xml:space="preserve">
     <value>Home And Garden</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="Main Information" xml:space="preserve">
     <value>Main Information</value>
+  </data>
+  <data name="Medical Equipment" xml:space="preserve">
+    <value>Medical Equipment</value>
   </data>
   <data name="Middle name" xml:space="preserve">
     <value>Middle name</value>

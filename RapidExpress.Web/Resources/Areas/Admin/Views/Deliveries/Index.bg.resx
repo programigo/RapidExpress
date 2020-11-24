@@ -138,6 +138,9 @@
   <data name="Delivery Location" xml:space="preserve">
     <value>Място на доставка</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Стойност на стоката</value>
+  </data>
   <data name="No deliveries matching the search criteria" xml:space="preserve">
     <value>Няма доставки, отговарящи на критериите за търсене</value>
   </data>

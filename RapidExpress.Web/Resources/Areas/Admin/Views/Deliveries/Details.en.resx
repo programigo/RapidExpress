@@ -144,6 +144,9 @@
   <data name="Food" xml:space="preserve">
     <value>Food</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Goods Value</value>
+  </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
   </data>

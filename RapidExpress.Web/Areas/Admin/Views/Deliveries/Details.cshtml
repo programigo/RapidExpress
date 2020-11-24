@@ -16,6 +16,11 @@
 					</div>
 					<div class="col">
 						<b>
+							@Localizer["Goods Value"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
 							@Localizer["Price"]
 						</b>
 					</div>
@@ -35,6 +40,9 @@
 				<div class="row">
 					<div class="col">
 						@Localizer[Model.Category.ToString()]
+					</div>
+					<div class="col">
+						@Model.GoodsValue
 					</div>
 					<div class="col">
 						@Model.Price

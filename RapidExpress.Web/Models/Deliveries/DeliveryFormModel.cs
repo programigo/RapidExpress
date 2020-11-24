@@ -13,6 +13,10 @@ namespace RapidExpress.Web.Models.Deliveries
 		[Display(Name = "Title")]
 		public string Title { get; set; }
 
+		[Required(ErrorMessage = "The {0} field is required.")]
+		[Display(Name = "Goods Value")]
+		public int GoodsValue { get; set; }
+
 		[Display(Name = "Price")]
 		public int? Price { get; set; }
 
@@ -90,9 +94,7 @@ namespace RapidExpress.Web.Models.Deliveries
 
 		public int? HeightSecondPart { get; set; }
 
-		[Required(ErrorMessage = "The {0} field is required.")]
-		[Display(Name = "Weight")]
-		public int Weight { get; set; }
+		public int? Weight { get; set; }
 
 		[Display(Name = "Additional Details")]
 		public string AdditionalDetails { get; set; }

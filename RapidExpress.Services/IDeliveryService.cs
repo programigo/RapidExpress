@@ -15,6 +15,7 @@ namespace RapidExpress.Services
 
 		Delivery Create(
 			string title,
+			int goodsValue,
 			int? price,
 			DeliveryCategory category,
 			bool hasInsurance,
@@ -38,7 +39,7 @@ namespace RapidExpress.Services
 			int? widthSecondPart,
 			int? heightFirstPart,
 			int? heightSecondPart,
-			int weight,
+			int? weight,
 			string additionalDetails,
 			DateTime createDate,
 			string userId);

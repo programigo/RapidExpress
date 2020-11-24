@@ -12,6 +12,8 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public string Title { get; set; }
 
+		public int GoodsValue { get; set; }
+
 		public int Price { get; set; }
 
 		public DeliveryCategory Category { get; set; }

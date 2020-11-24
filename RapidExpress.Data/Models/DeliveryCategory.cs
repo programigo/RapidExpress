@@ -18,6 +18,8 @@ namespace RapidExpress.Data.Models
 		Sport,
 		[Display(Name = "Home And Garden")]
 		HomeAndGarden,
+		[Display(Name = "Medical Equipment")]
+		MedicalEquipment,
 		[Display(Name = "Other")]
 		Other,
 	}

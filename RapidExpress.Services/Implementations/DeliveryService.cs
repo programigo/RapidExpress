@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.Extensions.Caching.Memory;
 using RapidExpress.Data;
 using RapidExpress.Data.Models;
 using RapidExpress.Services.Models.Deliveries;
@@ -35,7 +34,7 @@ namespace RapidExpress.Services.Implementations
 
 			return deliveries;
 		}
-			
+
 
 		public IEnumerable<DeliveryListingServiceModel> All()
 		{
@@ -50,6 +49,7 @@ namespace RapidExpress.Services.Implementations
 
 		public Delivery Create(
 			string title,
+			int goodsValue,
 			int? price,
 			DeliveryCategory category,
 			bool hasInsurance,
@@ -73,7 +73,7 @@ namespace RapidExpress.Services.Implementations
 			int? widthSecondPart,
 			int? heightFirstPart,
 			int? heightSecondPart,
-			int weight,
+			int? weight,
 			string additionalDetails,
 			DateTime createDate,
 			string userId)
@@ -81,6 +81,7 @@ namespace RapidExpress.Services.Implementations
 			Delivery delivery = new Delivery
 			{
 				Title = title,
+				GoodsValue = goodsValue,
 				Price = price,
 				Category = category,
 				HasInsurance = hasInsurance,

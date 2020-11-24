@@ -150,6 +150,9 @@
   <data name="Food" xml:space="preserve">
     <value>Храна</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Стойност на стоката</value>
+  </data>
   <data name="Home And Garden" xml:space="preserve">
     <value>Дом и градина</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="Main Information" xml:space="preserve">
     <value>Основна информация</value>
+  </data>
+  <data name="Medical Equipment" xml:space="preserve">
+    <value>Медицинско оборудване</value>
   </data>
   <data name="Middle name" xml:space="preserve">
     <value>Презиме</value>

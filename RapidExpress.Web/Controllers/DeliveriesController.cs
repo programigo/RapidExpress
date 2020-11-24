@@ -76,6 +76,7 @@ namespace RapidExpress.Web.Controllers
 
 				Delivery delivery = this.deliveryService.Create(
 					model.Title,
+					model.GoodsValue,
 					model.Price,
 					model.Category,
 					model.HasInsurance,
@@ -130,6 +131,7 @@ namespace RapidExpress.Web.Controllers
 			{
 				Id = deliveryDetailsServiceModel.Id,
 				Title = deliveryDetailsServiceModel.Title,
+				GoodsValue = deliveryDetailsServiceModel.GoodsValue,
 				Price = deliveryDetailsServiceModel.Price,
 				Category = deliveryDetailsServiceModel.Category,
 				PickUpLocation = deliveryDetailsServiceModel.PickUpLocation,

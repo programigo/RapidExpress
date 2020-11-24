@@ -153,6 +153,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Goods Value</value>
+  </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
   </data>

@@ -70,6 +70,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 				{
 					Id = serviceDelivery.Id,
 					Title = serviceDelivery.Title,
+					GoodsValue = serviceDelivery.GoodsValue,
 					Price = serviceDelivery.Price,
 					Category = serviceDelivery.Category,
 					PickUpLocation = serviceDelivery.PickUpLocation,

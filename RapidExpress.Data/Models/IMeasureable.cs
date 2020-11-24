@@ -14,6 +14,6 @@
 
 		int? HeightSecondPart { get; set; }
 
-		int Weight { get; set; }
+		int? Weight { get; set; }
 	}
 }

@@ -153,6 +153,9 @@
   <data name="Email" xml:space="preserve">
     <value>Имейл</value>
   </data>
+  <data name="Goods Value" xml:space="preserve">
+    <value>Стойност на стоката</value>
+  </data>
   <data name="Height" xml:space="preserve">
     <value>Височина</value>
   </data>

@@ -12,6 +12,8 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public string Title { get; set; }
 
+		public int GoodsValue { get; set; }
+
 		public int Price { get; set; }
 
 		public DeliveryCategory Category { get; set; }
@@ -58,7 +60,7 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public int? HeightSecondPart { get; set; }
 
-		public int Weight { get; set; }
+		public int? Weight { get; set; }
 
 		public string AdditionalDetails { get; set; }
 
