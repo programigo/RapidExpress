@@ -120,6 +120,9 @@
   <data name="Animals" xml:space="preserve">
     <value>Животни</value>
   </data>
+  <data name="Budget For Delivery" xml:space="preserve">
+    <value>Бюджет за доставка</value>
+  </data>
   <data name="Business" xml:space="preserve">
     <value>Бизнес</value>
   </data>
@@ -191,9 +194,6 @@
   </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Населено място за прием</value>
-  </data>
-  <data name="Price" xml:space="preserve">
-    <value>Цена</value>
   </data>
   <data name="Private" xml:space="preserve">
     <value>Частна собственост</value>

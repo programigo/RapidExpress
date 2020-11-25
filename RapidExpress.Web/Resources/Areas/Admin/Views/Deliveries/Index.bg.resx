@@ -123,6 +123,9 @@
   <data name="All Deliveries" xml:space="preserve">
     <value>Всички доставки</value>
   </data>
+  <data name="Budget For Delivery" xml:space="preserve">
+    <value>Бюджет за доставка</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Категория</value>
   </data>
@@ -146,9 +149,6 @@
   </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Място на взимане</value>
-  </data>
-  <data name="Price" xml:space="preserve">
-    <value>Цена</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Премахни</value>

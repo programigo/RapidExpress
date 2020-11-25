@@ -120,6 +120,9 @@
   <data name="Additional Details" xml:space="preserve">
     <value>Допълнителни детайли</value>
   </data>
+  <data name="Budget For Delivery (optional)" xml:space="preserve">
+    <value>Бюджет за доставка (незад.)</value>
+  </data>
   <data name="Business" xml:space="preserve">
     <value>Бизнес</value>
   </data>
@@ -194,9 +197,6 @@
   </data>
   <data name="Photos" xml:space="preserve">
     <value>Снимки</value>
-  </data>
-  <data name="Price (optional)" xml:space="preserve">
-    <value>Цена (незадължително)</value>
   </data>
   <data name="Street" xml:space="preserve">
     <value>Улица</value>

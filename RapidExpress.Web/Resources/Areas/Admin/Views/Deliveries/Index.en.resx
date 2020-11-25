@@ -123,6 +123,9 @@
   <data name="All Deliveries" xml:space="preserve">
     <value>All Deliveries</value>
   </data>
+  <data name="Budget For Delivery" xml:space="preserve">
+    <value>Budget For Delivery</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -146,9 +149,6 @@
   </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Pick Up Location</value>
-  </data>
-  <data name="Price (BGN)" xml:space="preserve">
-    <value>Price (BGN)</value>
   </data>
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
