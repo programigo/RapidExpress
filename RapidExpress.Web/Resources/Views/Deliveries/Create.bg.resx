@@ -135,6 +135,9 @@
   <data name="Choose File(s)..." xml:space="preserve">
     <value>Изберете файл(ове)...</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
   <data name="Collection Date" xml:space="preserve">
     <value>Дата за взимане</value>
   </data>
@@ -186,6 +189,9 @@
   <data name="meters" xml:space="preserve">
     <value>м</value>
   </data>
+  <data name="Modal Text" xml:space="preserve">
+    <value>Rapid Express не носи отговорност за всякакъв вид щети при доставката. Всичко е на ваша отговорност.</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Не</value>
   </data>
@@ -203,6 +209,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Заглавие</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Внимание</value>
   </data>
   <data name="Weight" xml:space="preserve">
     <value>Тегло</value>
