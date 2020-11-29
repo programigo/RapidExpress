@@ -120,8 +120,11 @@
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>ConfirmPassword</value>
+    <value>Confirm Password</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -129,11 +132,18 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="I agree with" xml:space="preserve">
+    <value>I agree with</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
   <data name="MiddleName" xml:space="preserve">
     <value>Middle Name</value>
+  </data>
+  <data name="Modal Text" xml:space="preserve">
+    <value>The following terms and conditions will be deemed to have been accepted by the User on usage of the website www.rapidexpress-bg.com. You are requested to read them carefully before you use the services of this site. &lt;br&gt;&lt;br&gt;
+1. The term User shall refer to the user who is browsing the site. The term Rapid Express shall refer to Rapid Express Inc. The term Site refers to http://www.rapidexpress-bg.com owned and monitored by Rapid Express. &lt;br&gt;&lt;br&gt;  2. By using the Site, you agree to follow and be bound by the following terms and conditions concerning your use of the Site. Rapid Express may revise the Terms of Use at any time without notice to you. Areas of the Site may have different terms of use posted. If there is a conflict between the Terms of Use and terms of use posted for a specific area of the Site, the latter shall have precedence with respect to your use of that area of the Site. &lt;br&gt;&lt;br&gt; 3. Rapid Express may terminate User's access at any time for any reason. The provisions regarding to disclaimer of warranty, accuracy of information and indemnification shall survive such termination. Rapid Express may monitor access to the Site.  &lt;br&gt;&lt;br&gt; 4. All content present on this site is the exclusive property of Rapid Express .The software, text, images, graphics, video and audio used on this site belong to Rapid Express. No material from this site may be copied, modified, reproduced, republished, uploaded, transmitted, posted or distributed in any form without prior written permission from Rapid Express. All rights not expressly granted herein are reserved. Unauthorized use of the materials appearing on this site may violate copyright, trademark and other applicable laws, and could result in criminal or civil penalties. Rapid Express is a registered trademark of Rapid Express Inc. This trademark may not be used in any manner without prior written consent from Rapid Express. &lt;br&gt;&lt;br&gt; 5. Rapid Express does not make any warranties, express or implied, including, without limitation, those of merchantability and fitness for a particular purpose, with respect to any information, data, statements or products made available on the Site. &lt;br&gt;&lt;br&gt; 6. The Site, and all content, materials, information, software, products and services provided on the Site, are provided on an "as is" and "as available" basis. Rapid Express expressly disclaims all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose and non-infringement.  &lt;br&gt;&lt;br&gt; 7. Rapid Express shall have no responsibility for any damage to User's computer system or loss of data that results from the download of any content, materials, information from the Site.  &lt;br&gt;&lt;br&gt; 8. Rapid Express may change or discontinue any aspect of its website at any time, including its content or features. Rapid Express reserves the right to change the terms and conditions applicable to the use of the Site. Such changes shall be effective immediately upon notice, which shall be placed on the Site. &lt;br&gt;&lt;br&gt; 9. In no event will Rapid Express be liable for damages of any kind, including without limitation, direct, incidental or consequential damages (including, but not limited to, damages for lost profits, business interruption and loss of programs or information) arising out of the use of or inability to use Rapid Express' website, or any information provided on the website, or in the Products any claim attributable to errors, omissions or other inaccuracies in the Product or interpretations thereof. Some jurisdictions do not allow the limitation or exclusion of liability. Accordingly, some of the above limitations may not apply to the User. &lt;br&gt;&lt;br&gt; 10. User agrees to indemnify, defend and hold Rapid Express harmless from and against all losses, expenses, damages and costs, including reasonable attorneys' fees, arising out of or relating to any misuse by the User of the content and services provided on the Site. &lt;br&gt;&lt;br&gt; 11. The information contained in the Site has been obtained from sources believed to be reliable. Rapid Express disclaims all warranties as to the accuracy, completeness or adequacy of such information. &lt;br&gt;&lt;br&gt; 12. Rapid Express makes no warranty that: (a) the Site will meet your requirements; (b) the Site will be available on an uninterrupted, timely, secure, or error-free basis; (c) the results that may be obtained from the use of the Site or any services offered through the Site will be accurate or reliable. &lt;br&gt;&lt;br&gt; 13. The User's right to privacy is of paramount importance to Rapid Express. Any information provided by the User will not be shared with any third party. Rapid Express reserves the right to use the information to provide the User a more personalized online experience. &lt;br&gt;&lt;br&gt; 14. The Site provides links to web sites and access to content, products and services from third parties, including users, advertisers, affiliates and sponsors of the Site. You agree that Rapid Express is not responsible for the availability of, and content provided on, third party web sites. The User is requested to peruse the policies posted by other web sites regarding privacy and other topics before use. Rapid Express is not responsible for third party content accessible through the Site, including opinions, advice, statements and advertisements, and User shall bear all risks associated with the use of such content. Rapid Express is not responsible for any loss or damage of any sort User may incur from dealing with any third party.                                                                                                                 </value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -146,6 +156,12 @@
   </data>
   <data name="Register As Transporter" xml:space="preserve">
     <value>Register As Transporter</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="Terms of Rapid Express" xml:space="preserve">
+    <value>Terms of Rapid Express</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

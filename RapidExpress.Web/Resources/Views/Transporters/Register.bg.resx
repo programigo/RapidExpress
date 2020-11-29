@@ -120,6 +120,9 @@
   <data name="City" xml:space="preserve">
     <value>Град</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Повторете паролата</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>Име</value>
+  </data>
+  <data name="I agree with" xml:space="preserve">
+    <value>Съгласен съм с</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Фамилия</value>
@@ -146,6 +152,12 @@
   </data>
   <data name="Register As Transporter" xml:space="preserve">
     <value>Регистрирайте се като превозвач</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>Правила и условия</value>
+  </data>
+  <data name="Terms of Rapid Express" xml:space="preserve">
+    <value>условията на Rapid Express</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>
