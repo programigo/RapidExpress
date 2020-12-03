@@ -44,7 +44,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 		{
 			IEnumerable<DeliveryListingServiceModel> serviceDeliveries = this.deliveryService.All();
 
-			serviceDeliveries = model.Category == null 
+			serviceDeliveries = model.Category == null
 				? serviceDeliveries
 				: serviceDeliveries.Where(d => d.Category == model.Category);
 
@@ -77,6 +77,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 					DeliveryLocation = serviceDelivery.DeliveryLocation,
 					CollectionDate = serviceDelivery.CollectionDate,
 					CreateDate = serviceDelivery.CreateDate,
+					PaymentMethod = serviceDelivery.PaymentMethod,
 					User = await this.userManager.FindByIdAsync(serviceDelivery.UserId),
 					Bids = this.bidService
 					.GetDeliveryBids(serviceDelivery.Id)
@@ -130,6 +131,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 				Weight = deliveryDetailsServiceModel.Weight,
 				AdditionalDetails = deliveryDetailsServiceModel.AdditionalDetails,
 				CreateDate = deliveryDetailsServiceModel.CreateDate,
+				PaymentMethod = deliveryDetailsServiceModel.PaymentMethod,
 				User = await this.userManager.FindByIdAsync(deliveryDetailsServiceModel.UserId),
 			};
 
@@ -144,10 +146,24 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			Delivery delivery = this.deliveryService.GetById(bid.DeliveryId);
 			User client = await this.userManager.FindByIdAsync(delivery.UserId);
 
-			await this.emailSender.SendEmailAsync(
+			if (delivery.PaymentMethod == DeliveryPaymentMethod.Cash)
+			{
+				await this.emailSender.SendEmailAsync(
 				client.Email,
-				$"Имате нова оферта за доставка {delivery.Title}",
-				$"Получена е нова оферта за доставка {delivery.Title}. Посетете https://{GlobalConstants.RapidExpressUrl}/Checkout?bidId={bidId} за да направите плащане.");
+				$"Имате нова оферта за доставка {delivery.Title} (You have a new offer for delivery {delivery.Title})",
+				$"Получена е нова оферта за доставка {delivery.Title}. Свържете се с администратор ако офертата Ви устройва." +
+				$"(A new offer for delivery {delivery.Title} has been recieved. Contact an administrator if the offer suits you.)");
+			}
+
+			else if (delivery.PaymentMethod == DeliveryPaymentMethod.Online)
+			{
+				await this.emailSender.SendEmailAsync(
+				   client.Email,
+				   $"Имате нова оферта за доставка {delivery.Title} (You have a new offer for delivery {delivery.Title})",
+				   $"Получена е нова оферта за доставка {delivery.Title}. Посетете https://{GlobalConstants.RapidExpressUrl}/Checkout?bidId={bidId} за да направите плащане." +
+				   $"(A new offer for delivery {delivery.Title} has been recieved. Visit https://{GlobalConstants.RapidExpressUrl}/Checkout?bidId={bidId} to make a payment.)");
+
+			}
 
 			return RedirectToAction(nameof(Index));
 		}

@@ -76,6 +76,7 @@ namespace RapidExpress.Services.Implementations
 			int? weight,
 			string additionalDetails,
 			DateTime createDate,
+			DeliveryPaymentMethod paymentMethod,
 			string userId)
 		{
 			Delivery delivery = new Delivery
@@ -107,6 +108,7 @@ namespace RapidExpress.Services.Implementations
 				HeightSecondPart = heightSecondPart,
 				Weight = weight,
 				CreateDate = createDate,
+				PaymentMethod = paymentMethod,
 				UserId = userId,
 			};
 

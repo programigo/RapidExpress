@@ -103,6 +103,7 @@ namespace RapidExpress.Web.Controllers
 					model.Weight,
 					model.AdditionalDetails,
 					DateTime.UtcNow,
+					model.PaymentMethod,
 					this.userManager.GetUserId(User));
 
 				var transporters = await userManager.GetUsersInRoleAsync(GlobalConstants.TransporterRole);
@@ -147,6 +148,7 @@ namespace RapidExpress.Web.Controllers
 				Weight = deliveryDetailsServiceModel.Weight,
 				AdditionalDetails = deliveryDetailsServiceModel.AdditionalDetails,
 				CreateDate = deliveryDetailsServiceModel.CreateDate,
+				PaymentMethod = deliveryDetailsServiceModel.PaymentMethod,
 				User = await this.userManager.FindByIdAsync(deliveryDetailsServiceModel.UserId),
 			};
 

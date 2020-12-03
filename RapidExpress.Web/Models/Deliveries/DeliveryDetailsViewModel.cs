@@ -42,6 +42,8 @@ namespace RapidExpress.Web.Models.Deliveries
 
 		public DateTime CreateDate { get; set; }
 
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public User User { get; set; }
 	}
 }

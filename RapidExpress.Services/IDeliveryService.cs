@@ -42,6 +42,7 @@ namespace RapidExpress.Services
 			int? weight,
 			string additionalDetails,
 			DateTime createDate,
+			DeliveryPaymentMethod paymentMethod,
 			string userId);
 
 		DeliveryDetailsServiceModel Details(int id);

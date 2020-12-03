@@ -195,6 +195,9 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="Payment Method" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
   <data name="Person" xml:space="preserve">
     <value>Person</value>
   </data>

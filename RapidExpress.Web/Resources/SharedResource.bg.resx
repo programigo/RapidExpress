@@ -120,6 +120,9 @@
   <data name="Animals" xml:space="preserve">
     <value>Животни</value>
   </data>
+  <data name="Cash" xml:space="preserve">
+    <value>В брой</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>Град</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="New password" xml:space="preserve">
     <value>Нова парола</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Онлайн плащане</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Други</value>

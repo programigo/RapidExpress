@@ -27,6 +27,8 @@ namespace RapidExpress.Web.Areas.Admin.Models
 
 		public User User { get; set; }
 
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public List<BidItemViewModel> Bids { get; set; } = new List<BidItemViewModel>();
 	}
 }

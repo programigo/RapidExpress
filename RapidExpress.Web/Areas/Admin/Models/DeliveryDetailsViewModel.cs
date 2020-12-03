@@ -64,6 +64,8 @@ namespace RapidExpress.Web.Areas.Admin.Models
 
 		public DateTime CreateDate { get; set; }
 
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public User User { get; set; }
 	}
 }

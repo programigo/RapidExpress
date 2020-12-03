@@ -195,6 +195,9 @@
   <data name="No" xml:space="preserve">
     <value>Не</value>
   </data>
+  <data name="Payment Method" xml:space="preserve">
+    <value>Начин на плащане</value>
+  </data>
   <data name="Person" xml:space="preserve">
     <value>Лице</value>
   </data>

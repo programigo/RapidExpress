@@ -120,6 +120,9 @@
   <data name="Animals" xml:space="preserve">
     <value>Animals</value>
   </data>
+  <data name="Cash" xml:space="preserve">
+    <value>In cash</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="New password" xml:space="preserve">
     <value>New password</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online payment</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Other</value>

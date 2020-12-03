@@ -80,6 +80,10 @@ namespace RapidExpress.Web.Models.Deliveries
 		[Display(Name = "Collection Date")]
 		public DateTime CollectionDate { get; set; }
 
+		[Required(ErrorMessage = "This field is required.")]
+		[Display(Name = "Payment Method")]
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public List<IFormFile> Photos { get; set; }
 
 		public int? LengthFirstPart { get; set; }

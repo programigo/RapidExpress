@@ -41,6 +41,9 @@
 						@Localizer["Created by"]
 					</th>
 					<th>
+						@Localizer["Payment Method"]
+					</th>
+					<th>
 						@Localizer["Actions"]
 					</th>
 				</tr>
@@ -77,6 +80,9 @@
 						</td>
 						<td>
 							@delivery.User.UserName
+						</td>
+						<td>
+							@delivery.PaymentMethod
 						</td>
 						<td>
 							<a asp-controller="Deliveries" asp-action="Remove" asp-route-id="@delivery.Id" class="btn btn-danger">

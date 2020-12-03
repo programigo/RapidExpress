@@ -75,6 +75,8 @@ namespace RapidExpress.Data.Models
 
 		public DateTime CreateDate { get; set; }
 
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public string UserId { get; set; }
 
 		public User User { get; set; }

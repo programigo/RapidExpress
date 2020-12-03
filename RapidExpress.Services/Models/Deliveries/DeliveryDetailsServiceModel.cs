@@ -66,6 +66,8 @@ namespace RapidExpress.Services.Models.Deliveries
 
 		public DateTime CreateDate { get; set; }
 
+		public DeliveryPaymentMethod PaymentMethod { get; set; }
+
 		public string UserId { get; set; }
 
 		public void ConfigureMapping(Profile mapper)
