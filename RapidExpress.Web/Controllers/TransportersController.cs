@@ -12,9 +12,9 @@ namespace RapidExpress.Web.Controllers
 {
 	public class TransportersController : Controller
 	{
-		private readonly UserManager<User> _userManager;
-		private readonly SignInManager<User> _signInManager;
-		private readonly ILogger _logger;
+		private readonly UserManager<User> userManager;
+		private readonly SignInManager<User> signInManager;
+		private readonly ILogger logger;
 		private readonly IStringLocalizer<TransportersController> localizer;
 
 		public TransportersController(
@@ -23,15 +23,15 @@ namespace RapidExpress.Web.Controllers
 			ILogger<TransportersController> logger,
 			IStringLocalizer<TransportersController> localizer)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_logger = logger;
+			this.userManager = userManager;
+			this.signInManager = signInManager;
+			this.logger = logger;
 			this.localizer = localizer;
 		}
 
 		public async Task<IActionResult> Details(string id)
 		{
-			User user = await _userManager.FindByIdAsync(id);
+			User user = await userManager.FindByIdAsync(id);
 
 			TransporterDetailsViewModel result = new TransporterDetailsViewModel
 			{
@@ -74,7 +74,7 @@ namespace RapidExpress.Web.Controllers
 					City = model.City,
 					PhoneNumber = model.Phone,
 				};
-				var result = await _userManager.CreateAsync(user, model.Password);
+				var result = await userManager.CreateAsync(user, model.Password);
 
 				if (result.Succeeded)
 				{

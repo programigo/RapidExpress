@@ -21,10 +21,10 @@ namespace RapidExpress.Web.Controllers
 	[Route("[controller]/[action]")]
 	public class AccountController : Controller
 	{
-		private readonly UserManager<User> _userManager;
-		private readonly SignInManager<User> _signInManager;
-		private readonly IAdminUserService _users;
-		private readonly IEmailSender _emailSender;
+		private readonly UserManager<User> userManager;
+		private readonly SignInManager<User> signInManager;
+		private readonly IAdminUserService users;
+		private readonly IEmailSender emailSender;
 		private readonly IStringLocalizer<AccountController> localizer;
 
 		public AccountController(
@@ -35,10 +35,10 @@ namespace RapidExpress.Web.Controllers
 			IEmailSender emailSender,
 			IStringLocalizer<AccountController> localizer)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_users = users;
-			_emailSender = emailSender;
+			this.userManager = userManager;
+			this.signInManager = signInManager;
+			this.users = users;
+			this.emailSender = emailSender;
 			this.localizer = localizer;
 		}
 
@@ -64,9 +64,9 @@ namespace RapidExpress.Web.Controllers
 			ViewData["ReturnUrl"] = returnUrl;
 			if (ModelState.IsValid)
 			{
-				bool isApprovedUser = _users.IsApprovedUser(model.Username);
+				bool isApprovedUser = users.IsApprovedUser(model.Username);
 
-				User user = _users
+				User user = users
 					.GetUserByName(model.Username)
 					.Select(u => new User
 					{
@@ -89,7 +89,7 @@ namespace RapidExpress.Web.Controllers
 					ModelState.AddModelError(string.Empty, localizer["You must wait to be approved by administrator."]);
 					return View(model);
 				}
-				var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, lockoutOnFailure: false);
+				var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, true, lockoutOnFailure: false);
 				if (result.Succeeded && isApprovedUser)
 				{
 					return RedirectToLocal(returnUrl);
@@ -114,7 +114,7 @@ namespace RapidExpress.Web.Controllers
 		public async Task<IActionResult> LoginWithRecoveryCode(string returnUrl = null)
 		{
 			// Ensure the user has gone through the username & password screen first
-			User user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
+			User user = await signInManager.GetTwoFactorAuthenticationUserAsync();
 			if (user == null)
 			{
 				throw new ApplicationException($"Unable to load two-factor authentication user.");
@@ -156,7 +156,7 @@ namespace RapidExpress.Web.Controllers
 					MiddleName = model.MiddleName,
 					LastName = model.LastName,
 				};
-				var result = await _userManager.CreateAsync(user, model.Password);
+				var result = await userManager.CreateAsync(user, model.Password);
 				var returnResult = new IdentityResult();
 				if (result.Succeeded && user.IsApproved)
 				{
@@ -168,7 +168,7 @@ namespace RapidExpress.Web.Controllers
 						LastName = model.LastName,
 					};
 
-					await _signInManager.SignInAsync(signInUser, isPersistent: false);
+					await signInManager.SignInAsync(signInUser, isPersistent: false);
 					return RedirectToLocal(returnUrl);
 				}
 				else
@@ -187,7 +187,7 @@ namespace RapidExpress.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Logout()
 		{
-			await _signInManager.SignOutAsync();
+			await signInManager.SignOutAsync();
 			return RedirectToAction(nameof(AccountController.Login), "Account");
 		}
 
@@ -198,7 +198,7 @@ namespace RapidExpress.Web.Controllers
 		{
 			// Request a redirect to the external login provider.
 			var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account", new { returnUrl });
-			var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+			var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
 			var systemProperties = new Microsoft.AspNetCore.Authentication.AuthenticationProperties
 			{
 				IsPersistent = properties.IsPersistent,
@@ -219,14 +219,14 @@ namespace RapidExpress.Web.Controllers
 				ErrorMessage = $"Error from external provider: {remoteError}";
 				return RedirectToAction(nameof(Login));
 			}
-			var info = await _signInManager.GetExternalLoginInfoAsync();
+			var info = await signInManager.GetExternalLoginInfoAsync();
 			if (info == null)
 			{
 				return RedirectToAction(nameof(Login));
 			}
 
 			// Sign in the user with this external login provider if the user already has a login.
-			var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+			var result = await signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
 			if (result.Succeeded)
 			{
 				return RedirectToLocal(returnUrl);
@@ -253,22 +253,22 @@ namespace RapidExpress.Web.Controllers
 			if (ModelState.IsValid)
 			{
 				// Get the information about the user from the external login provider
-				var info = await _signInManager.GetExternalLoginInfoAsync();
+				var info = await signInManager.GetExternalLoginInfoAsync();
 				if (info == null)
 				{
 					throw new ApplicationException("Error loading external login information during confirmation.");
 				}
 				var user = new User { UserName = model.Email, Email = model.Email };
-				var result = await _userManager.CreateAsync(user);
+				var result = await userManager.CreateAsync(user);
 				var returnResult = new IdentityResult();
 				if (result.Succeeded)
 				{
-					result = await _userManager.AddLoginAsync(user, info);
+					result = await userManager.AddLoginAsync(user, info);
 					if (result.Succeeded)
 					{
 						var signInUser = new User { UserName = model.Email, Email = model.Email };
 
-						await _signInManager.SignInAsync(signInUser, isPersistent: false);
+						await signInManager.SignInAsync(signInUser, isPersistent: false);
 						return RedirectToLocal(returnUrl);
 					}
 				}
@@ -288,12 +288,12 @@ namespace RapidExpress.Web.Controllers
 			{
 				return RedirectToAction(nameof(HomeController.Index), "Home");
 			}
-			var user = await _userManager.FindByIdAsync(userId);
+			var user = await userManager.FindByIdAsync(userId);
 			if (user == null)
 			{
 				throw new ApplicationException($"Unable to load user with ID '{userId}'.");
 			}
-			var result = await _userManager.ConfirmEmailAsync(user, code);
+			var result = await userManager.ConfirmEmailAsync(user, code);
 			return View(result.Succeeded ? "ConfirmEmail" : "Error");
 		}
 
@@ -311,7 +311,7 @@ namespace RapidExpress.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var user = await _userManager.FindByEmailAsync(model.Email);
+				var user = await userManager.FindByEmailAsync(model.Email);
 				if (user == null)
 				{
 					// Don"t reveal that the user does not exist or is not confirmed
@@ -320,9 +320,9 @@ namespace RapidExpress.Web.Controllers
 
 				// For more information on how to enable account confirmation and password reset please
 				// visit https://go.microsoft.com/fwlink/?LinkID=532713
-				var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+				var code = await userManager.GeneratePasswordResetTokenAsync(user);
 				var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-				await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+				await emailSender.SendEmailAsync(model.Email, "Reset Password",
 				 $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 				return RedirectToAction(nameof(ForgotPasswordConfirmation));
 			}
@@ -359,13 +359,13 @@ namespace RapidExpress.Web.Controllers
 			{
 				return View(model);
 			}
-			var user = await _userManager.FindByEmailAsync(model.Email);
+			var user = await userManager.FindByEmailAsync(model.Email);
 			if (user == null)
 			{
 				// Don"t reveal that the user does not exist
 				return RedirectToAction(nameof(ResetPasswordConfirmation));
 			}
-			var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
+			var result = await userManager.ResetPasswordAsync(user, model.Code, model.Password);
 			var returnResult = new IdentityResult();
 			if (result.Succeeded)
 			{

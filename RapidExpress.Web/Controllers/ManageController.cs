@@ -15,9 +15,9 @@ namespace RapidExpress.Web.Controllers
 	[Route("[controller]/[action]")]
 	public class ManageController : Controller
 	{
-		private readonly UserManager<User> _userManager;
-		private readonly SignInManager<User> _signInManager;
-		private readonly UrlEncoder _urlEncoder;
+		private readonly UserManager<User> userManager;
+		private readonly SignInManager<User> signInManager;
+		private readonly UrlEncoder urlEncoder;
 		private readonly IStringLocalizer<ManageController> localizer;
 
 		private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
@@ -29,9 +29,9 @@ namespace RapidExpress.Web.Controllers
 		  UrlEncoder urlEncoder,
 		  IStringLocalizer<ManageController> localizer)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_urlEncoder = urlEncoder;
+			this.userManager = userManager;
+			this.signInManager = signInManager;
+			this.urlEncoder = urlEncoder;
 			this.localizer = localizer;
 		}
 
@@ -41,10 +41,10 @@ namespace RapidExpress.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Index()
 		{
-			var user = await _userManager.GetUserAsync(User);
+			var user = await userManager.GetUserAsync(User);
 			if (user == null)
 			{
-				throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+				throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 			}
 
 			var model = new IndexViewModel
@@ -67,16 +67,16 @@ namespace RapidExpress.Web.Controllers
 				return View(model);
 			}
 
-			var user = await _userManager.GetUserAsync(User);
+			var user = await userManager.GetUserAsync(User);
 			if (user == null)
 			{
-				throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+				throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 			}
 
 			var email = user.Email;
 			if (model.Email != email)
 			{
-				var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+				var setEmailResult = await userManager.SetEmailAsync(user, model.Email);
 				if (!setEmailResult.Succeeded)
 				{
 					AddErrors(setEmailResult);
@@ -89,7 +89,7 @@ namespace RapidExpress.Web.Controllers
 			var phoneNumber = user.PhoneNumber;
 			if (model.PhoneNumber != phoneNumber)
 			{
-				var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
+				var setPhoneResult = await userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
 				if (!setPhoneResult.Succeeded)
 				{
 					AddErrors(setPhoneResult);
@@ -105,10 +105,10 @@ namespace RapidExpress.Web.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ChangePassword()
 		{
-			var user = await _userManager.GetUserAsync(User);
+			var user = await userManager.GetUserAsync(User);
 			if (user == null)
 			{
-				throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+				throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 			}
 
 			var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
@@ -124,20 +124,20 @@ namespace RapidExpress.Web.Controllers
 				return View(model);
 			}
 
-			var user = await _userManager.GetUserAsync(User);
+			var user = await userManager.GetUserAsync(User);
 			if (user == null)
 			{
-				throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+				throw new ApplicationException($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
 			}
 
-			var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+			var changePasswordResult = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
 			if (!changePasswordResult.Succeeded)
 			{
 				AddErrors(changePasswordResult);
 				return View(model);
 			}
 
-			await _signInManager.SignInAsync(user, isPersistent: false);
+			await signInManager.SignInAsync(user, isPersistent: false);
 			StatusMessage = localizer["Your password has been changed."];
 
 			return RedirectToAction(nameof(ChangePassword));

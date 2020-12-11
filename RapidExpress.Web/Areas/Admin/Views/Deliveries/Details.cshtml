@@ -59,6 +59,11 @@
 				<div class="row">
 					<div class="col">
 						<b>
+							@Localizer["Payment Method"]
+						</b>
+					</div>
+					<div class="col">
+						<b>
 							@Localizer["Length"]
 						</b>
 					</div>
@@ -81,6 +86,9 @@
 			</li>
 			<li class="list-group-item">
 				<div class="row">
+					<div class="col">
+						@Model.PaymentMethod
+					</div>
 					<div class="col">
 						@if (Model.LengthFirstPart > 0)
 						{

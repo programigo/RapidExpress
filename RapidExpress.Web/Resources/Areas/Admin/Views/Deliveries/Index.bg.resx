@@ -147,9 +147,6 @@
   <data name="No deliveries matching the search criteria" xml:space="preserve">
     <value>Няма доставки, отговарящи на критериите за търсене</value>
   </data>
-  <data name="Payment Method" xml:space="preserve">
-    <value>Начин на плащане</value>
-  </data>
   <data name="Pick Up Location" xml:space="preserve">
     <value>Място на взимане</value>
   </data>

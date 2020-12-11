@@ -12,9 +12,9 @@ namespace RapidExpress.Web.Controllers
 {
 	public class CustomersController : Controller
 	{
-		private readonly UserManager<User> _userManager;
-		private readonly SignInManager<User> _signInManager;
-		private readonly ILogger _logger;
+		private readonly UserManager<User> userManager;
+		private readonly SignInManager<User> signInManager;
+		private readonly ILogger logger;
 		private readonly IStringLocalizer<CustomersController> localizer;
 
 		public CustomersController(
@@ -23,9 +23,9 @@ namespace RapidExpress.Web.Controllers
 			ILogger<CustomersController> logger,
 			IStringLocalizer<CustomersController> localizer)
 		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-			_logger = logger;
+			this.userManager = userManager;
+			this.signInManager = signInManager;
+			this.logger = logger;
 			this.localizer = localizer;
 		}
 
@@ -57,14 +57,14 @@ namespace RapidExpress.Web.Controllers
 					Role = GlobalConstants.CustomerRole,
 					IsApproved = true,
 				};
-				var result = await _userManager.CreateAsync(user, model.Password);
+				var result = await userManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
-					await _userManager.AddToRoleAsync(user, GlobalConstants.CustomerRole);
+					await userManager.AddToRoleAsync(user, GlobalConstants.CustomerRole);
 
-					await _signInManager.SignInAsync(user, isPersistent: false);
+					await signInManager.SignInAsync(user, isPersistent: false);
 
-					_logger.LogInformation("User created a new account with password.");
+					logger.LogInformation("User created a new account with password.");
 
 					TempData.AddSuccessMessage(localizer["Registration successfull."]);
 
