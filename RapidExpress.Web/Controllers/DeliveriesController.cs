@@ -21,6 +21,7 @@ namespace RapidExpress.Web.Controllers
 	{
 		private UserManager<User> userManager;
 		private readonly IDeliveryService deliveryService;
+		private readonly ITemplateHelperService templateHelperService;
 		private readonly IWebHostEnvironment hostingEnvironment;
 		private readonly IEmailSender emailSender;
 		private readonly IStringLocalizer<DeliveriesController> localizer;
@@ -28,12 +29,14 @@ namespace RapidExpress.Web.Controllers
 		public DeliveriesController(
 			UserManager<User> userManager,
 			IDeliveryService deliveryService,
+			ITemplateHelperService templateHelperService,
 			IWebHostEnvironment hostingEnvironment,
 			IEmailSender emailSender,
 			IStringLocalizer<DeliveriesController> localizer)
 		{
 			this.userManager = userManager;
 			this.deliveryService = deliveryService;
+			this.templateHelperService = templateHelperService;
 			this.hostingEnvironment = hostingEnvironment;
 			this.emailSender = emailSender;
 			this.localizer = localizer;
@@ -108,10 +111,13 @@ namespace RapidExpress.Web.Controllers
 
 				var transporters = await userManager.GetUsersInRoleAsync(GlobalConstants.TransporterRole);
 
+				string emailSubject = "Създадена е нова доставка (A new delivery has been created)";
+				string htmlTemplate = await this.templateHelperService.GetTemplateHtmlAsString("Templates/EmailTemplate/DeliveryCreated");
+				string messageBody = string.Format(htmlTemplate, GlobalConstants.RapidExpressUrl, delivery.Id);
+
 				foreach (var transporter in transporters)
 				{
-					await this.emailSender.SendEmailAsync(
-						transporter.Email, "Създадена е нова доставка", $"За повече информация посетете https://{GlobalConstants.RapidExpressUrl}/Details/{delivery.Id}");
+					await this.emailSender.SendEmailAsync(transporter.Email, emailSubject, messageBody);
 				}
 
 				TempData.AddSuccessMessage(localizer["Delivery {0} created successfully.", model.Title]);

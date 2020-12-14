@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using RapidExpress.Data.Models;
+using RapidExpress.Services;
 using RapidExpress.Services.Admin;
 using RapidExpress.Web.Common.Models;
 using RapidExpress.Web.Infrastructure.Extensions;
@@ -25,6 +26,7 @@ namespace RapidExpress.Web.Controllers
 		private readonly SignInManager<User> signInManager;
 		private readonly IAdminUserService users;
 		private readonly IEmailSender emailSender;
+		private readonly ITemplateHelperService templateHelperService;
 		private readonly IStringLocalizer<AccountController> localizer;
 
 		public AccountController(
@@ -33,13 +35,15 @@ namespace RapidExpress.Web.Controllers
 			ILogger<AccountController> logger,
 			IAdminUserService users,
 			IEmailSender emailSender,
-			IStringLocalizer<AccountController> localizer)
+			IStringLocalizer<AccountController> localizer,
+			ITemplateHelperService templateHelperService)
 		{
 			this.userManager = userManager;
 			this.signInManager = signInManager;
 			this.users = users;
 			this.emailSender = emailSender;
 			this.localizer = localizer;
+			this.templateHelperService = templateHelperService;
 		}
 
 		[TempData]
@@ -320,10 +324,15 @@ namespace RapidExpress.Web.Controllers
 
 				// For more information on how to enable account confirmation and password reset please
 				// visit https://go.microsoft.com/fwlink/?LinkID=532713
-				var code = await userManager.GeneratePasswordResetTokenAsync(user);
-				var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-				await emailSender.SendEmailAsync(model.Email, "Reset Password",
-				 $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+				string code = await userManager.GeneratePasswordResetTokenAsync(user);
+				string callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+
+				string emailSubject = "Нулиране на парола (Reset Password)";
+				string htmlTemplate = await this.templateHelperService.GetTemplateHtmlAsString("Templates/EmailTemplate/ResetPassword");
+				string messageBody = string.Format(htmlTemplate, callbackUrl);
+
+				await emailSender.SendEmailAsync(model.Email, emailSubject, messageBody);
+
 				return RedirectToAction(nameof(ForgotPasswordConfirmation));
 			}
 
