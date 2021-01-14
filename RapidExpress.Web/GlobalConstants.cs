@@ -10,6 +10,8 @@
 		public const string TempDataSuccessMessageKey = "SuccessMessage";
 		public const string TempDataErrorMessageKey = "ErrorMessage";
 
-		public const string RapidExpressUrl = "localhost:44315";
+		public const string RapidExpressUrl = "rapidexpress-bg.com";
+		public const string RapidExpressPhoneNumber = "0889417601";
+		public const string RapidExpressEmail = "office@rapidexpress-bg.com";
 	}
 }
