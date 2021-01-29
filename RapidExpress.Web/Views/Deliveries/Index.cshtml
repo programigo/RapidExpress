@@ -12,11 +12,11 @@
 			<div class="card h-100">
 				@if (delivery.Photos.Any())
 				{
-					<img src="~/images/@delivery.Photos.First().Path" class="card-img">
+					<img src="/images/@delivery.Photos.First().Path" class="card-img">
 				}
 				else
 				{
-					<img src="~/images/no-image-icon-11.png" class="card-img">
+					<img src="/images/no-image-icon-11.png" class="card-img">
 				}
 				<div class="card-body">
 					<h4 class="card-title">
