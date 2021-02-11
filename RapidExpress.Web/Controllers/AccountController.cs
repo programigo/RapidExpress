@@ -93,7 +93,7 @@ namespace RapidExpress.Web.Controllers
 					ModelState.AddModelError(string.Empty, localizer["You must wait to be approved by administrator."]);
 					return View(model);
 				}
-				var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, true, lockoutOnFailure: false);
+				var result = await signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, false);
 				if (result.Succeeded && isApprovedUser)
 				{
 					return RedirectToLocal(returnUrl);
