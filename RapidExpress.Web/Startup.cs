@@ -117,7 +117,7 @@ namespace RapidExpress.Web
 
 			app.UseAuthentication();
 			app.UseAuthorization();
-
+			app.UseCors("AllowOrigin");
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapAreaControllerRoute(
