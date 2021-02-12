@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -19,6 +20,7 @@ using RapidExpress.Web.Resources;
 using RapidExpress.Web.Resources.IdentityErrorMessages;
 using Stripe;
 using System.Globalization;
+using System.IO;
 using System.Reflection;
 
 namespace RapidExpress.Web
@@ -35,6 +37,13 @@ namespace RapidExpress.Web
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			var environment = services.BuildServiceProvider().GetRequiredService<IWebHostEnvironment>();
+
+
+			services.AddDataProtection()
+					.SetApplicationName($"my-app-{environment.EnvironmentName}")
+					.PersistKeysToFileSystem(new DirectoryInfo($@"{environment.ContentRootPath}\keys"));
+
 			services.AddDbContext<RapidExpressDbContext>(options =>
 			options.UseSqlServer(
 				Configuration.GetConnectionString("DefaultConnection")));
