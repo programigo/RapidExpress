@@ -1,9 +1,9 @@
 ﻿using RapidExpress.Data.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace RapidExpress.Web.Models.Bids
+namespace RapidExpress.Web.Areas.Admin.Models
 {
-	public class BidFormModel
+	public class SendOfferFormModel
 	{
 		public string Amount { get; set; }
 

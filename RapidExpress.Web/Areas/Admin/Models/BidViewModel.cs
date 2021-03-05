@@ -10,7 +10,7 @@ namespace RapidExpress.Web.Areas.Admin.Models
 
 		public int Amount { get; set; }
 
-		public BidCurrency Currency { get; set; }
+		public Currency Currency { get; set; }
 
 		public int DeliveryId { get; set; }
 

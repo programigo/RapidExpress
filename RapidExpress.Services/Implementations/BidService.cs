@@ -25,7 +25,7 @@ namespace RapidExpress.Services.Implementations
 				.Where(b => b.DeliveryId == deliveryId)
 				.ProjectTo<BidServiceModel>(this.provider);
 
-		public void CreateBid(int amount, BidCurrency currency, int deliveryId, string userId)
+		public Bid CreateBid(decimal amount, Currency currency, int deliveryId, string userId)
 		{
 			Bid bid = new Bid
 			{
@@ -38,6 +38,8 @@ namespace RapidExpress.Services.Implementations
 			this.db.Add(bid);
 
 			this.db.SaveChanges();
+
+			return bid;
 		}
 
 		public Bid GetById(int id)

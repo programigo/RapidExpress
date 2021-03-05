@@ -44,7 +44,7 @@ namespace RapidExpress.Web.Controllers
 							{
 								Name = delivery.Title,
 							},
-							UnitAmount = bid.Amount * 100,
+							UnitAmountDecimal = bid.Amount * 100,
 						},
 						Quantity = 1
 					}

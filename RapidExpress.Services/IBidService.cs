@@ -8,7 +8,7 @@ namespace RapidExpress.Services
 	{
 		IEnumerable<BidServiceModel> GetDeliveryBids(int deliveryId);
 
-		void CreateBid(int amount, BidCurrency currency, int deliveryItemId, string userId);
+		Bid CreateBid(decimal amount, Currency currency, int deliveryItemId, string userId);
 
 		Bid GetById(int id);
 	}

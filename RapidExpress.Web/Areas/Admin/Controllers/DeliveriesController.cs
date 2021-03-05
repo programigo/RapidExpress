@@ -173,5 +173,40 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
+
+		[HttpPost]
+		public async Task<IActionResult> SendAdminOffer(SendOfferFormModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View();
+			} 
+
+			decimal amount = 0;
+
+			if (!decimal.TryParse(model.Amount, out amount))
+			{
+				return View();
+			}
+
+			Bid bid = this.bidService.CreateBid(amount, model.Currency, model.DeliveryId, this.userManager.GetUserId(User));
+			Delivery delivery = this.deliveryService.GetById(model.DeliveryId);
+			User client = await this.userManager.FindByIdAsync(delivery.UserId);
+
+			string emailSubject = $"Имате нова оферта за доставка {delivery.Title} (You have a new offer for delivery {delivery.Title})";
+
+			string htmlTemplate = await this.templateHelperService.GetTemplateHtmlAsString(
+				delivery.PaymentMethod == DeliveryPaymentMethod.Cash
+				? "Templates/EmailTemplate/ConfirmCashPayment"
+				: "Templates/EmailTemplate/ConfirmOnlinePayment");
+
+			string messageBody = delivery.PaymentMethod == DeliveryPaymentMethod.Cash
+				? string.Format(htmlTemplate, delivery.Title, amount, model.Currency)
+				: string.Format(htmlTemplate, delivery.Title, GlobalConstants.RapidExpressUrl, bid.Id);
+			
+			await this.emailSender.SendEmailAsync(client.Email, emailSubject, messageBody);
+
+			return RedirectToAction(nameof(Index));
+		}
 	}
 }

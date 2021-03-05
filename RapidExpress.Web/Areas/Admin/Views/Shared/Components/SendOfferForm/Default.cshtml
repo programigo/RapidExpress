@@ -1,11 +1,11 @@
-﻿@model BidFormModel
+﻿@model SendOfferFormModel
 @inject IViewLocalizer Localizer
 
-<button class="btn btn-primary" data-toggle="modal" data-target="#bid-modal-@Model.DeliveryId">
-	@Localizer["Add Bid"]
+<button class="btn btn-primary" data-toggle="modal" data-target="#send-offer-modal-@Model.DeliveryId">
+	@Localizer["Send offer"]
 </button>
 
-<div class="modal fade" id="bid-modal-@Model.DeliveryId" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="send-offer-modal-@Model.DeliveryId" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -17,7 +17,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" asp-controller="Bids" asp-action="Create">
+				<form method="post" asp-area="Admin" asp-controller="Deliveries" asp-action="SendAdminOffer">
 					<div class="form-group">
 						<label asp-for="Amount">
 							@Localizer["Amount"]
@@ -36,7 +36,7 @@
 						<input type="hidden" asp-for="@Model.DeliveryId" value="@Model.DeliveryId" />
 					</div>
 					<button type="submit" class="btn btn-success">
-						@Localizer["Create Bid"]
+						@Localizer["Send offer"]
 					</button>
 				</form>
 			</div>

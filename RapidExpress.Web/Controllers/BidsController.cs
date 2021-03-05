@@ -39,8 +39,15 @@ namespace RapidExpress.Web.Controllers
 				return View();
 			}
 
+			decimal modelAmount = 0;
+
+			if (!decimal.TryParse(model.Amount, out modelAmount))
+			{
+				return View();
+			}
+
 			this.bidService.CreateBid(
-					model.Amount,
+					modelAmount,
 					model.Currency,
 					model.DeliveryId,
 					this.userManager.GetUserId(User));

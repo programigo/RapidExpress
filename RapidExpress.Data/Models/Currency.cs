@@ -1,6 +1,6 @@
 ﻿namespace RapidExpress.Data.Models
 {
-	public enum BidCurrency
+	public enum Currency
 	{
 		BGN,
 		EUR,

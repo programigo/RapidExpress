@@ -6,9 +6,9 @@ namespace RapidExpress.Web.Models.Bids
 	{
 		public int Id { get; set; }
 
-		public int Amount { get; set; }
+		public decimal Amount { get; set; }
 
-		public BidCurrency Currency { get; set; }
+		public Currency Currency { get; set; }
 
 		public int DeliveryId { get; set; }
 
