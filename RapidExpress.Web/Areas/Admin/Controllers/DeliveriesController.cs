@@ -174,7 +174,6 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
-		[HttpPost]
 		public async Task<IActionResult> SendAdminOffer(SendOfferFormModel model)
 		{
 			if (!ModelState.IsValid)
