@@ -1,9 +1,12 @@
-﻿namespace RapidExpress.Data.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RapidExpress.Data.Models
 {
 	public class Bid
 	{
 		public int Id { get; set; }
 
+		[Column(TypeName = "decimal(18,2)")]
 		public decimal Amount { get; set; }
 
 		public Currency Currency { get; set; }
