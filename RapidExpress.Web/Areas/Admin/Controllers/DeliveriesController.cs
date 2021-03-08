@@ -7,6 +7,7 @@ using RapidExpress.Data.Models;
 using RapidExpress.Services;
 using RapidExpress.Services.Models.Deliveries;
 using RapidExpress.Web.Areas.Admin.Models;
+using RapidExpress.Web.Controllers;
 using RapidExpress.Web.Infrastructure.Extensions;
 using RapidExpress.Web.Models.Bids;
 using System;
@@ -206,7 +207,7 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			
 			await this.emailSender.SendEmailAsync(client.Email, emailSubject, messageBody);
 
-			return RedirectToAction(nameof(Index));
+			return RedirectToAction(nameof(HomeController.Index), "Home", new { area = "" });
 		}
 	}
 }
