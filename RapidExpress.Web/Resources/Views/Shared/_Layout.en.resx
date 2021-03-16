@@ -132,6 +132,9 @@
   <data name="Pending Requests" xml:space="preserve">
     <value>Pending Requests</value>
   </data>
+  <data name="Prices" xml:space="preserve">
+    <value>Prices</value>
+  </data>
   <data name="Register New Moderator" xml:space="preserve">
     <value>Register New Moderator</value>
   </data>

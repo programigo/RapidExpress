@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="All Deliveries" xml:space="preserve">
-    <value>Всички доставки</value>
+  <data name="FirstSentence" xml:space="preserve">
+    <value>Цената за доставка на всички видове стоки до 10 кг. за град София е 39.95 лв.</value>
   </data>
-  <data name="Contacts" xml:space="preserve">
-    <value>Контакти</value>
+  <data name="FourthSentence" xml:space="preserve">
+    <value>Всички цени са с включен ДДС.</value>
   </data>
-  <data name="Create new delivery" xml:space="preserve">
-    <value>Създай нова доставка</value>
+  <data name="SecondSentence" xml:space="preserve">
+    <value>За всички останали градове и села цената е 1 лев за всеки 1 километър.</value>
   </data>
-  <data name="Deliveries" xml:space="preserve">
-    <value>Доставки</value>
-  </data>
-  <data name="Pending Requests" xml:space="preserve">
-    <value>Чакащи заявки</value>
-  </data>
-  <data name="Prices" xml:space="preserve">
-    <value>Цени</value>
-  </data>
-  <data name="Register New Moderator" xml:space="preserve">
-    <value>Регистрация на нов модератор</value>
-  </data>
-  <data name="User Administration" xml:space="preserve">
-    <value>Потребителска администрация</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Потребители</value>
+  <data name="ThirdSentence" xml:space="preserve">
+    <value>Пример: доставка от Бургас до Казанлък ще струва около 190 лева (разстояние около 189 км).</value>
   </data>
 </root>
