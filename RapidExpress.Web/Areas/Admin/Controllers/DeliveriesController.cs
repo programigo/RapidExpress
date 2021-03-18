@@ -175,20 +175,29 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 			return RedirectToAction(nameof(Index));
 		}
 
+		[HttpGet]
+		public IActionResult SendAdminOffer([FromRoute] int id) 
+		{
+			Delivery delivery = this.deliveryService.GetById(id);
+
+			var model = new SendOfferFormModel
+			{
+				DeliveryId = delivery.Id,
+				DeliveryTitle = delivery.Title,
+			};
+
+			return View(model);
+		}
+
 		[HttpPost]
 		public async Task<IActionResult> SendAdminOffer(SendOfferFormModel model)
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
-			} 
-
-			decimal amount = 0;
-
-			if (!decimal.TryParse(model.Amount, out amount))
-			{
-				return View();
+				return View(model);
 			}
+
+			decimal amount = decimal.Parse(model.Amount);
 
 			Bid bid = this.bidService.CreateBid(amount, model.Currency, model.DeliveryId, this.userManager.GetUserId(User));
 			Delivery delivery = this.deliveryService.GetById(model.DeliveryId);
@@ -206,6 +215,8 @@ namespace RapidExpress.Web.Areas.Admin.Controllers
 				: string.Format(htmlTemplate, delivery.Title, GlobalConstants.RapidExpressUrl, bid.Id);
 			
 			await this.emailSender.SendEmailAsync(client.Email, emailSubject, messageBody);
+
+			TempData.AddSuccessMessage(localizer["Delivery offer successfully sent."]);
 
 			return RedirectToAction(nameof(HomeController.Index), "Home", new { area = "" });
 		}

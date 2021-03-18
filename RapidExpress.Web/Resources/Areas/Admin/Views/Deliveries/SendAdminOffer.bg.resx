@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Delivery offer successfully sent." xml:space="preserve">
-    <value>Delivery offer successfully sent.</value>
+  <data name="Amount" xml:space="preserve">
+    <value>Сума</value>
   </data>
-  <data name="Delivery successfully removed." xml:space="preserve">
-    <value>Delivery successfully removed.</value>
+  <data name="Currency" xml:space="preserve">
+    <value>Валута</value>
+  </data>
+  <data name="Send offer" xml:space="preserve">
+    <value>Изпрати оферта</value>
   </data>
 </root>

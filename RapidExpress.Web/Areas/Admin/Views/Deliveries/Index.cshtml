@@ -82,7 +82,9 @@
 							<a asp-controller="Deliveries" asp-action="Remove" asp-route-id="@delivery.Id" class="btn btn-danger">
 								@Localizer["Remove"]
 							</a>
-							@await Component.InvokeAsync("SendOfferForm", new { deliveryId = delivery.Id, deliveryTitle = delivery.Title })
+							<a asp-controller="Deliveries" asp-action="SendAdminOffer" asp-route-id="@delivery.Id" class="btn btn-primary">
+								@Localizer["Send offer"]
+							</a>
 						</td>
 					</tr>
 					@foreach (var bid in delivery.Bids)
