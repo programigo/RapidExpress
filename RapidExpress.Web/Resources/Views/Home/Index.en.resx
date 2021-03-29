@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BulgariaMapBox" xml:space="preserve">
+    <value>Any packages picked up from Sofia and delivered in Sofia take up to 2 hours to any destination, otherwise the delivery will be FREE of charge. We deliver to any location in Bulgaria. Visit the Prices page for more information.</value>
+  </data>
+  <data name="HandAndClockBox" xml:space="preserve">
+    <value>Rapid Express nature of business is to deliver on the same day to any place in Bulgaria. If we fail to deliver in time, the package delivery will be FREE.</value>
+  </data>
   <data name="Here, everyone can be a transporter" xml:space="preserve">
     <value>Here, everyone can be a transporter</value>
+  </data>
+  <data name="Medical equipment delivery" xml:space="preserve">
+    <value>Medical equipment delivery</value>
+  </data>
+  <data name="MedicalDeliveryBox" xml:space="preserve">
+    <value>Rapid Express delivers medical equipments, blood, emergency packages and life animals from door to door. Why go to carrier if carrier can come to you 24/7?</value>
   </data>
   <data name="Same day delivery" xml:space="preserve">
     <value>Same day delivery</value>
@@ -126,8 +138,14 @@
   <data name="Self-employee transporters" xml:space="preserve">
     <value>Self-employee transporters</value>
   </data>
+  <data name="TwentyFourSevenBox" xml:space="preserve">
+    <value>We work around the clock, including weekends and holidays. We can pick up your package at any time you call us and deliver to any destination in Bulgaria.</value>
+  </data>
   <data name="We are here for you non-stop" xml:space="preserve">
     <value>We are here for you non-stop</value>
+  </data>
+  <data name="We offer delivery for all kind of medical equipment, including blood and organs" xml:space="preserve">
+    <value>We offer delivery for all kind of medical equipment, including blood and organs</value>
   </data>
   <data name="You receive your items on the same day that they are placed for delivery" xml:space="preserve">
     <value>You receive your items on the same day that they are placed for delivery</value>

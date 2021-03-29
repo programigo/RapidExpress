@@ -1,18 +1,92 @@
 ﻿@inject IViewLocalizer Localizer
+@using RapidExpress.Web.Views.Prices;
 
 @{
-	ViewData["Title"] = "Prices";
+		ViewData["Title"] = "Prices";
+
+		TableRow[] tableRows = new TableRow[]
+		{
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Vidin"], Distance = 194, TravelTime = Localizer["TravelTimeFormat", 4, 30] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Montana"], Distance = 107, TravelTime = Localizer["TravelTimeFormat", 3, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Vratsa"], Distance = 111, TravelTime = Localizer["TravelTimeFormat", 2, 45] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Pleven"], Distance = 164, TravelTime = Localizer["TravelTimeFormat", 3, 25] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Veliko Tarnovo"], Distance = 220, TravelTime = Localizer["TravelTimeFormat", 3, 55] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Ruse"], Distance = 310, TravelTime = Localizer["TravelTimeFormat", 5, 30] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Razgrad"], Distance = 336, TravelTime = Localizer["TravelTimeFormat", 6, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Silistra"], Distance = 434, TravelTime = Localizer["TravelTimeFormat", 7, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Dobrich"], Distance = 482, TravelTime = Localizer["TravelTimeFormat", 7, 25] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Varna"], Distance = 441, TravelTime = Localizer["TravelTimeFormat", 6, 45] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Shumen"], Distance = 359, TravelTime = Localizer["TravelTimeFormat", 5, 45] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Targovishte"], Distance = 319, TravelTime = Localizer["TravelTimeFormat", 5, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Gabrovo"], Distance = 203, TravelTime = Localizer["TravelTimeFormat", 3, 45] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Lovech"], Distance = 150, TravelTime = Localizer["TravelTimeFormat", 3, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Pernik"], Distance = 35, TravelTime = Localizer["TravelTimeFormat", 1, 10] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Kyustendil"], Distance = 104, TravelTime = Localizer["TravelTimeFormat", 2, 25] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Blagoevgrad"], Distance = 101, TravelTime = Localizer["TravelTimeFormat", 2, 20] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Pazardzhik"], Distance = 113, TravelTime = Localizer["TravelTimeFormat", 2, 30] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Plovdiv"], Distance = 150, TravelTime = Localizer["TravelTimeFormat", 2, 25] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Smolyan"], Distance = 245, TravelTime = Localizer["TravelTimeFormat", 4, 30] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Kardzali"], Distance = 261, TravelTime = Localizer["TravelTimeFormat", 4, 30] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Stara Zagora"], Distance = 236, TravelTime = Localizer["TravelTimeFormat", 3, 50] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Haskovo"], Distance = 228, TravelTime = Localizer["TravelTimeFormat", 3, 55] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Sliven"], Distance = 313, TravelTime = Localizer["TravelTimeFormat", 4, 0] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Yambol"], Distance = 303, TravelTime = Localizer["TravelTimeFormat", 4, 35] },
+		new TableRow{ StartPoint = Localizer["Sofia"], EndPoint = Localizer["Burgas"], Distance = 388, TravelTime = Localizer["TravelTimeFormat", 5, 25] },
+			};
 }
 
-<p>
-	@Localizer["FirstSentence"]
-</p>
-<p>
-	@Localizer["SecondSentence"]
-</p>
-<p>
-	@Localizer["ThirdSentence"]
-</p>
-<p>
-	@Localizer["FourthSentence"]
-</p>
+<div class="mb-2">
+	@Localizer["WeDeliverTo"]
+</div>
+<div class="mb-2">
+	<img class="d-block w-100" src="/images/Bulgaria_map.jpg" alt="Bulgaria map">
+</div>
+<div class="mb-2">
+	@Localizer["CurrentDeliveries"]
+</div>
+<div class="table-responsive">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>
+					@Localizer["StartPoint"]
+				</th>
+				<th>
+					@Localizer["EndPoint"]
+				</th>
+				<th>
+					@Localizer["Distance"]
+				</th>
+				<th>
+					@Localizer["TravelTime"]
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var tableRow in tableRows)
+			{
+				<tr>
+					<td>
+						<i class="fas fa-map-marker-alt"></i>
+						@tableRow.StartPoint
+					</td>
+					<td>
+						<i class="fas fa-map-marker-alt"></i>
+						@tableRow.EndPoint
+					</td>
+					<td>
+						<i class="fas fa-route"></i>
+						@tableRow.Distance
+					</td>
+					<td>
+						<i class="fas fa-clock"></i>
+						@tableRow.TravelTime
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+<div>
+	@Localizer["PriceDescription"]
+</div>

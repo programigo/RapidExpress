@@ -117,16 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FirstSentence" xml:space="preserve">
-    <value>The price for delivery of all types of goods up to 10 kg. for the city of Sofia is BGN 39.95.</value>
+  <data name="Blagoevgrad" xml:space="preserve">
+    <value>Blagoevgrad</value>
   </data>
-  <data name="FourthSentence" xml:space="preserve">
-    <value>All prices include VAT.</value>
+  <data name="Burgas" xml:space="preserve">
+    <value>Burgas</value>
   </data>
-  <data name="SecondSentence" xml:space="preserve">
-    <value>For all other towns and villages the price is 1 lev for every 1 kilometer.</value>
+  <data name="CurrentDeliveries" xml:space="preserve">
+    <value>Currently we deliver:</value>
   </data>
-  <data name="ThirdSentence" xml:space="preserve">
-    <value>Example: delivery from Bourgas to Kazanlak will cost about 190 leva (distance about 189 km).</value>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance(km)</value>
+  </data>
+  <data name="Dobrich" xml:space="preserve">
+    <value>Dobrich</value>
+  </data>
+  <data name="EndPoint" xml:space="preserve">
+    <value>End Point</value>
+  </data>
+  <data name="Gabrovo" xml:space="preserve">
+    <value>Gabrovo</value>
+  </data>
+  <data name="Haskovo" xml:space="preserve">
+    <value>Haskovo</value>
+  </data>
+  <data name="Kardzali" xml:space="preserve">
+    <value>Kardzali</value>
+  </data>
+  <data name="Kyustendil" xml:space="preserve">
+    <value>Kyustendil</value>
+  </data>
+  <data name="Lovech" xml:space="preserve">
+    <value>Lovech</value>
+  </data>
+  <data name="Montana" xml:space="preserve">
+    <value>Montana</value>
+  </data>
+  <data name="Pazardzhik" xml:space="preserve">
+    <value>Pazardzhik</value>
+  </data>
+  <data name="Pernik" xml:space="preserve">
+    <value>Pernik</value>
+  </data>
+  <data name="Pleven" xml:space="preserve">
+    <value>Pleven</value>
+  </data>
+  <data name="Plovdiv" xml:space="preserve">
+    <value>Plovdiv</value>
+  </data>
+  <data name="PriceDescription" xml:space="preserve">
+    <value>The price for every delivery for the city of Sofia is 39.95 leva for up to 10 kilograms. For other places the price is 1 leva per kilometer.</value>
+  </data>
+  <data name="Razgrad" xml:space="preserve">
+    <value>Razgrad</value>
+  </data>
+  <data name="Ruse" xml:space="preserve">
+    <value>Ruse</value>
+  </data>
+  <data name="Shumen" xml:space="preserve">
+    <value>Shumen</value>
+  </data>
+  <data name="Silistra" xml:space="preserve">
+    <value>Silistra</value>
+  </data>
+  <data name="Sliven" xml:space="preserve">
+    <value>Sliven</value>
+  </data>
+  <data name="Smolyan" xml:space="preserve">
+    <value>Smolyan</value>
+  </data>
+  <data name="Sofia" xml:space="preserve">
+    <value>Sofia</value>
+  </data>
+  <data name="Stara Zagora" xml:space="preserve">
+    <value>Stara Zagora</value>
+  </data>
+  <data name="StartPoint" xml:space="preserve">
+    <value>Start Point</value>
+  </data>
+  <data name="Targovishte" xml:space="preserve">
+    <value>Targovishte</value>
+  </data>
+  <data name="TravelTime" xml:space="preserve">
+    <value>Travel Time</value>
+  </data>
+  <data name="TravelTimeFormat" xml:space="preserve">
+    <value>~ {0} hr. {1} min.</value>
+  </data>
+  <data name="Varna" xml:space="preserve">
+    <value>Varna</value>
+  </data>
+  <data name="Veliko Tarnovo" xml:space="preserve">
+    <value>Veliko Tarnovo</value>
+  </data>
+  <data name="Vidin" xml:space="preserve">
+    <value>Vidin</value>
+  </data>
+  <data name="Vratsa" xml:space="preserve">
+    <value>Vratsa</value>
+  </data>
+  <data name="WeDeliverTo" xml:space="preserve">
+    <value>We deliver to every city and village in Bulgaria.</value>
+  </data>
+  <data name="Yambol" xml:space="preserve">
+    <value>Yambol</value>
   </data>
 </root>

@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BulgariaMapBox" xml:space="preserve">
+    <value>Всички пакети, взети от София и доставени в София, отнемат до 2 часа до всяка дестинация, в противен случай доставката ще бъде БЕЗПЛАТНА. Доставяме до всяко място в България. Посетете страницата Цени за повече информация.</value>
+  </data>
+  <data name="HandAndClockBox" xml:space="preserve">
+    <value>Същността на бизнеса на Rapid Express е да доставя в един и същи ден до всяко място в България. Ако не успеем да доставим навреме, доставката на пакета ще бъде БЕЗПЛАТНА.</value>
+  </data>
   <data name="Here, everyone can be a transporter" xml:space="preserve">
     <value>Тук, всеки може да бъде превозвач</value>
+  </data>
+  <data name="Medical equipment delivery" xml:space="preserve">
+    <value>Доставка на медицинско оборудване</value>
+  </data>
+  <data name="MedicalDeliveryBox" xml:space="preserve">
+    <value>Rapid Express доставя медицинско оборудване, кръв, спешни опаковки и животни от врата до врата. Защо да ходите при превозвача, ако превозвачът може да дойде при вас денонощно?</value>
   </data>
   <data name="Same day delivery" xml:space="preserve">
     <value>Доставка на същия ден</value>
@@ -126,8 +138,14 @@
   <data name="Self-employee transporters" xml:space="preserve">
     <value>Самостоятелно заети превозвачи</value>
   </data>
+  <data name="TwentyFourSevenBox" xml:space="preserve">
+    <value>Работим денонощно, включително през почивните и празничните дни. Можем да вземем вашия пакет по всяко време, когато ни се обадите и да го доставим до всяка точка в България.</value>
+  </data>
   <data name="We are here for you non-stop" xml:space="preserve">
     <value>Ние сме тук за вас без прекъсване</value>
+  </data>
+  <data name="We offer delivery for all kind of medical equipment, including blood and organs" xml:space="preserve">
+    <value>Ние предлагаме доставка за всякакъв вид медицинско оборудване, включително кръв и органи</value>
   </data>
   <data name="You receive your items on the same day that they are placed for delivery" xml:space="preserve">
     <value>Получавате артикулите си в същия ден, в който са поставени за доставка</value>
